@@ -2,8 +2,8 @@
 ############################################
 # Windows shortcut files
 *.lnk
-# jsdoc output files when run in the js folder
-js/out/*
+# Anything in the build destination folder
+build/*
 
 # Compiled source #
 ###################
