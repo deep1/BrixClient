@@ -14,7 +14,7 @@
  *
  * **************************************************************************/
 
-goog.provide('pearson.brix.AnswerManPolling');
+goog.provide('pearson.brix.utils.AnswerManPolling');
 
 
 /* **************************************************************************
@@ -26,7 +26,7 @@ goog.provide('pearson.brix.AnswerManPolling');
  * @export
  *
  **************************************************************************/
-pearson.brix.AnswerManPolling = function ()
+pearson.brix.utils.AnswerManPolling = function ()
 {
 };
 
@@ -45,7 +45,7 @@ pearson.brix.AnswerManPolling = function ()
  *			feedback: <what will be displayed back to the student>,
  *			score: <the numeric score>}
  ****************************************************************************/
-pearson.brix.AnswerManPolling.prototype.submitAnswer = function(sequenceNode, studAnswerKey, studAnswerValue) 
+pearson.brix.utils.AnswerManPolling.prototype.submitAnswer = function(sequenceNode, studAnswerKey, studAnswerValue) 
 {
 	if (!(studAnswerKey in this.statData))
 	{
@@ -72,4 +72,4 @@ pearson.brix.AnswerManPolling.prototype.submitAnswer = function(sequenceNode, st
  * so what is it's purpose? Are you sure it shouldn't be an instance variable?
  * @type {Object}
  */
-pearson.brix.AnswerManPolling.prototype.statData = {};
+pearson.brix.utils.AnswerManPolling.prototype.statData = {};

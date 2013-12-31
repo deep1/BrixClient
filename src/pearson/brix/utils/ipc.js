@@ -36,7 +36,7 @@
  * @copyright (c) 2013 Pearson, All rights reserved.
  *
  * **************************************************************************/
-goog.provide('pearson.brix.Ipc');
+goog.provide('pearson.brix.utils.Ipc');
 
 goog.require('goog.debug.Logger');
 
@@ -63,14 +63,14 @@ goog.require('pearson.brix.BricLayer');
  *                                         and subscribing to them.
  *
  ****************************************************************************/
-pearson.brix.Ipc = function (config, eventManager)
+pearson.brix.utils.Ipc = function (config, eventManager)
 {
     /**
      * A logger to help debugging
      * @type {goog.debug.Logger}
      * @private
      */
-    this.logger_ = goog.debug.Logger.getLogger('pearson.brix.Ipc');
+    this.logger_ = goog.debug.Logger.getLogger('pearson.brix.utils.Ipc');
 
     if (!config.ipsBaseUrl)
     {
@@ -138,9 +138,9 @@ pearson.brix.Ipc = function (config, eventManager)
  * PAF Activity, user (student) and course. The IPS adds it to the activity
  * config returned to the IPC.
  *
- * @typedef {string} pearson.brix.Ipc.SequenceNodeKey
+ * @typedef {string} pearson.brix.utils.Ipc.SequenceNodeKey
  */
-pearson.brix.Ipc.SequenceNodeKey;
+pearson.brix.utils.Ipc.SequenceNodeKey;
 
 /* **************************************************************************
  * Ipc.init                                                            */ /**
@@ -163,7 +163,7 @@ pearson.brix.Ipc.SequenceNodeKey;
  *                                            handling. Only in iframe mode.
  *                                            Should be undefined (or null) in div mode.
  ****************************************************************************/
-pearson.brix.Ipc.prototype.init = function (items, opt_containerId)
+pearson.brix.utils.Ipc.prototype.init = function (items, opt_containerId)
 {
     if (!items || items.length === 0)
     {
@@ -227,7 +227,7 @@ pearson.brix.Ipc.prototype.init = function (items, opt_containerId)
  * @param  {!Array.<Object>} items  Array of {assignmentId=<val>, itemid=<val>, type=<val>}
  * @return {!Array.<Object>}        Normalized array.
  ****************************************************************************/
-pearson.brix.Ipc.prototype.normalizeByTopic = function (items)
+pearson.brix.utils.Ipc.prototype.normalizeByTopic = function (items)
 {
     // Dictionary to check for duplicates
     var dictionary = {};
@@ -270,7 +270,7 @@ pearson.brix.Ipc.prototype.normalizeByTopic = function (items)
  *
  * @return {string}          The topic name
  ****************************************************************************/
-pearson.brix.Ipc.prototype.activityBindingReplyTopic = function (item)
+pearson.brix.utils.Ipc.prototype.activityBindingReplyTopic = function (item)
 {
     if (!item.assignmenturl || !item.activityurl)
     {
@@ -288,7 +288,7 @@ pearson.brix.Ipc.prototype.activityBindingReplyTopic = function (item)
  * Subscribes to initialization topic using the provided item(s) information
  * (formerly known as itemId)
  ****************************************************************************/
-pearson.brix.Ipc.prototype.subscribeInitTopic = function ()
+pearson.brix.utils.Ipc.prototype.subscribeInitTopic = function ()
 {
     var item;
     var that = this;
