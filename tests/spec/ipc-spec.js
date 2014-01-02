@@ -85,7 +85,7 @@
                 type: "brix"
             });
             var eventManager = new pearson.utils.EventManager();
-            var ipc = new pearson.brix.Ipc(ipcConfig, eventManager);
+            var ipc = new pearson.brix.utils.Ipc(ipcConfig, eventManager);
             var normalized = ipc.normalizeByTopic(itemsWithDuplicateTopics);
 
             console.log("**NORM:" + JSON.stringify(normalized));
@@ -98,7 +98,7 @@
 
         it('should properly initialize by subscribing to init topics (div & iframe mode)', function () {
             var eventManager = new pearson.utils.EventManager();
-            var ipc = new pearson.brix.Ipc(ipcConfig, eventManager);
+            var ipc = new pearson.brix.utils.Ipc(ipcConfig, eventManager);
             var items = DomHelper.scanElements('brix', 'div');
 
             // Both should be set to true after init();
@@ -125,7 +125,7 @@
 
         it('should handle init messages (div & iframe mode)', function () {
             var eventManager = new pearson.utils.EventManager();
-            var ipc = new pearson.brix.Ipc(ipcConfig, eventManager);
+            var ipc = new pearson.brix.utils.Ipc(ipcConfig, eventManager);
             var items = DomHelper.scanElements('brix', 'div');
             
             // Both should be set to true after init();
@@ -180,7 +180,7 @@
 
         it('should publish to AMC requesting sequence node identifier (iframe mode only)', function () {
             var eventManager = new pearson.utils.EventManager();
-            var ipc = new pearson.brix.Ipc(ipcConfig, eventManager);
+            var ipc = new pearson.brix.utils.Ipc(ipcConfig, eventManager);
             var items = [ expectedItems[0] ];
             
             var itemChecklist = [false, false, false];
