@@ -15,7 +15,7 @@
     <script src="js/d3.v3.min.js"></script>
 
 	<!-- include google library base for use in tests -->
-	<script src="../closure/closure-library/closure/goog/base.js"></script>
+	<script src="js/goog/base.js"></script>
 
 	<!--
     <script src="../js/brixlib-compiled.js"></script>
@@ -23,14 +23,12 @@
 
 	<script src="js/brixlib-deps.js"></script>
 	<script>
-		goog.require('pearson.brix.Ipc');
-		goog.require('pearson.utils.DomHelper');
+		goog.require('pearson.brix.BricLayer');
+		goog.require('pearson.brix.utils.LocalAnswerMan');
 	</script>
 
     <script>
-    var debugConsole = new goog.debug.Console();
-    debugConsole.setCapturing(true);
-    goog.debug.Logger.getLogger('pearson').setLevel(goog.debug.Logger.Level.FINER);
+        pearson.utils.logToConsole(true, 'FINER', 'pearson');
     </script>
 
     <script>

@@ -58,12 +58,12 @@
 	<!--
 	<script src="js/brixlib-compiled.js"></script>
 	-->
-	<script src="../closure/closure-library/closure/goog/base.js"></script>
+	<script src="js/goog/base.js"></script>
 	<script src="js/brixlib-deps.js"></script>
 
 	<script>
-		goog.require('pearson.brix.Ipc');
-		goog.require('pearson.utils.DomHelper');
+        // requiring the briclayer will pull in all brix and mortar and the eventmanager
+		goog.require('pearson.brix.BricLayer');
 	</script>
 	
 
