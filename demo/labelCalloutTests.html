@@ -52,20 +52,28 @@
 	<script src="js/eCourse-master.js"></script>
 	<script src="js/d3.v3.min.js"></script>
 
-	<script src="js/brixlib-compiled.js"></script>
-	<!--
-	<script src="js/eventmanager.js"></script>
-	<script src="js/widget-base.js"></script>
-	<script src="js/widget-linegraph.js"></script>
-	<script src="js/widget-labelgroup.js"></script>
-    <script src="js/widget-markergroup.js"></script>
-    <script src="js/widget-callouts.js"></script>
-	<script src="js/widget-image.js"></script>
-	<script src="js/widget-imageviewer.js"></script>
-	<script src="js/widget-carousel.js"></script>
-	!-->
+	<!--script src="js/brixlib-compiled.js"></script-->
+
+	<!--script src="js/goog/base.js"></script>
+	<script src="js/brixlib-deps.js"></script>
+    <script>
+        goog.require('pearson.brix.LabelGroup');
+    </script-->
+
+	<script src="js/goog/base.js"></script>
+	<script src="../src/pearson/utils/eventmanager.js"></script>
+	<script src="../src/pearson/brix/widget-base.js"></script>
+	<script src="../src/pearson/brix/widget-prototype-axes.js"></script>
+	<script src="../src/pearson/brix/widget-linegraph.js"></script>
+	<script src="../src/pearson/brix/widget-labelgroup.js"></script>
+    <script src="../src/pearson/brix/widget-markergroup.js"></script>
+    <script src="../src/pearson/brix/widget-callouts.js"></script>
+	<script src="../src/pearson/brix/widget-image.js"></script>
+	<script src="../src/pearson/brix/widget-carousel.js"></script>
+	<script src="../src/pearson/brix/widget-imageviewer.js"></script>
 
 <script>
+    pearson.utils.logToConsole(true, 'FINER', 'pearson');
 // local aliases for convenience
 	var EventManager = pearson.utils.EventManager;
 	var Rect = pearson.utils.Rect;
