@@ -6,35 +6,33 @@
     <title>Brix test page</title>
 
     <!-- bootstrap_plus.css contains styling for the dropdown menu and other common core styles -->
-    <link href="../../css/bootstrap_plus.css" rel="stylesheet" type="text/css" media="screen"/>
+    <link href="css/bootstrap_plus.css" rel="stylesheet" type="text/css" media="screen"/>
     
     <!-- widgets.css contains styling for the interactive brix -->
-    <link href="../../css/widgets.css" rel="stylesheet" type="text/css"/>
+    <link href="css/widgets.css" rel="stylesheet" type="text/css"/>
 
     <!-- eCourse-master.css contains styling for all the navigation -->
-    <link href="../../css/eCourse-master.css" rel="stylesheet" type="text/css" media="screen"/>
+    <link href="css/eCourse-master.css" rel="stylesheet" type="text/css" media="screen"/>
 
     <!-- content_styles.css contains styling for the narrative layout and responsive design -->
-    <link href="../../css/content_styles.css" rel="stylesheet" type="text/css" media="screen"/>
+    <link href="css/content_styles.css" rel="stylesheet" type="text/css" media="screen"/>
 
     <!-- function created by David Bau to allow seeding Math.random -->
-    <!-- downloaded from github https://github.com/davidbau/seedrandom -->
-    <script src="../lib/seedrandom.js"></script>
-    <!-- mocking framework -->
-    <script src="../lib/sinon-1.7.3.js"></script>
 
     <!-- include source files here... -->
-    <script src="../../js/d3.v3.min.js"></script>
+    <script src="../js/d3.v3.min.js"></script>
 
     <!-- include google library base for use in tests -->
-    <script src="../../js/jquery-latest.js"></script>
+    <script src="../js/jquery-latest.js"></script>
 
     <!-- Local directory copy of built brixlib -->
-    <script src="../../js/brixlib-compiled.js"></script>
+    <script src="js/brixlib-compiled.js"></script>
+
+    <!-- SanVan core (LAS-PAF)'s amc -->
+    <script src="js/amc.js"></script>
  
-    <!-- IPC initialization and pointers to IPS and AMS -->
-    
-    <script src="demo-boilerplate.js"></script>
+    <!-- IPC initialization and pointers to IPS and AMS -->    
+    <script src="js/demo-boilerplate.js"></script>
 
 
     <script>
@@ -42,10 +40,7 @@
 	pearson.utils.logToConsole(true, 'FINER', 'pearson');
     </script>
 
-    <!-- SanVan core (LAS-PAF)'s amc -->
-    <script src="amc.js"></script>
     <style type="text/css">
-
 .demo_message_box {
     border: orange 1px solid; padding: 10px;
 }
@@ -226,7 +221,7 @@
         var assignmentUrl = targetDiv.data("assignmenturl");
         var activityUrl = targetDiv.data("activityurl");
         $("#div_id").text(divId);
-        var amsVersionHyperlink = " (<a href=\"" +  amsBaseUrl + "/las-paf/version.txt\">las-api version</a>)";
+        var amsVersionHyperlink = " (<a href=\"" +  amsBaseUrl + "/las-paf/version.txt\">las-paf version</a>)";
         $("#ams_base_url").html(amsBaseUrl + amsVersionHyperlink);
         var ipsLogHyperlink = " (server <a href=\"" +  ipsBaseUrl + "/index.html\">info</a>, <a href=\"" +  ipsBaseUrl + "/log\">log</a>)";
         $("#ips_base_url").html(ipsBaseUrl + ipsLogHyperlink);
