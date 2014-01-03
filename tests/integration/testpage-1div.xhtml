@@ -17,23 +17,32 @@
     <!-- content_styles.css contains styling for the narrative layout and responsive design -->
     <link href="css/content_styles.css" rel="stylesheet" type="text/css" media="screen"/>
 
-    <!-- function created by David Bau to allow seeding Math.random -->
-
     <!-- include source files here... -->
-    <script src="../js/d3.v3.min.js"></script>
+    <script src="js/d3.v3.min.js"></script>
 
     <!-- include google library base for use in tests -->
-    <script src="../js/jquery-latest.js"></script>
+    <script src="js/jquery-latest.js"></script>
 
     <!-- Local directory copy of built brixlib -->
     <script src="js/brixlib-compiled.js"></script>
+    <!--
+    The following does not work in this xhtml file because base.js
+    uses document.write to inject the scripts to be loaded and that method
+    doesn't exist. It is possible to supply a method to inject the
+    scripts, but I haven't tried that. -mjl
 
+    <script src="js/closure-library/closure/goog/base.js"></script>
+    <script src="js/brixlib-deps.js"></script>
+    <script>
+        goog.require('pearson.brix.utils.Ipc');
+        goog.require('pearson.utils.DomHelper');
+    </script -->
+ 
     <!-- SanVan core (LAS-PAF)'s amc -->
     <script src="js/amc.js"></script>
- 
-    <!-- IPC initialization and pointers to IPS and AMS -->    
-    <script src="js/demo-boilerplate.js"></script>
 
+    <!-- IPC initialization and pointers to IPS and AMS -->
+    <script src="js/demo-boilerplate.js"></script>
 
     <script>
     // The logToConsole abstracts the google closure logging configuration:
@@ -44,7 +53,7 @@
 .demo_message_box {
     border: orange 1px solid; padding: 10px;
 }
-.demo_params .dataval{
+.demo_params .dataval {
     font-weight: bold;
 }
 .demo {
