@@ -67,7 +67,7 @@ pearson.brix.utils.SubmitManager = function (eventManager, answerMan)
     /**
      * map of all submitted answers awaiting a response from
      * the scoring engine.
-     * @type {Object.<pearson.brix.Ipc.SequenceNodeKey, pearson.brix.utils.SubmitManager.PendingDetails>}
+     * @type {Object.<pearson.brix.utils.Ipc.SequenceNodeKey, pearson.brix.utils.SubmitManager.PendingDetails>}
      * @private
      */
     this.requestsAwaitingResponse_ = {};
@@ -78,7 +78,7 @@ pearson.brix.utils.SubmitManager = function (eventManager, answerMan)
  * request for an activity to be scored by the scoring engine.
  *
  * @typedef {Object} pearson.brix.utils.SubmitManager.PendingDetails
- * @property {pearson.brix.Ipc.SequenceNodeKey}
+ * @property {pearson.brix.utils.Ipc.SequenceNodeKey}
  *                              sequenceNodeKey -The PAF Activity Id which identifies the
  *                                               activity being scored.
  * @property {string}           answer          -The 'key' of the chosen answer to be scored.
