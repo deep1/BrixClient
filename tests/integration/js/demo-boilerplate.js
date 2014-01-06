@@ -51,7 +51,7 @@ function brixInitDiv(opt_amsBaseUrl, opt_ipsBaseUrl, opt_course, opt_user)
     //       The server configuration is in /BrixServer/config/ 
     var ipcConfig = {ipsBaseUrl: ipsBaseUrl};
         //var ipcConfig = {ipsBaseUrl:"http://dev-414158649.us-west-1.elb.amazonaws.com/ips"};
-    var ipc = new pearson.brix.Ipc(ipcConfig, eventManager);
+    var ipc = new pearson.brix.utils.Ipc(ipcConfig, eventManager);
 
     // Scan through the div element with class brix
     var items = pearson.utils.DomHelper.scanElements('brix', 'div');

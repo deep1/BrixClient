@@ -95,7 +95,7 @@ $(brixlib_compiled) : $(brixlib_sources)
 
 # The path from base.js can't use .. through a symlink, that is the reason for the path below
 $(brixlib_deps) : $(brixlib_sources)
-	python $(DEPSWRITER) --root_with_prefix="src/pearson ../../../src/pearson" --output_file=$(brixlib_deps)
+	python $(DEPSWRITER) --root_with_prefix="src/pearson ../../../pearson" --output_file=$(brixlib_deps)
 
 doc :
 
