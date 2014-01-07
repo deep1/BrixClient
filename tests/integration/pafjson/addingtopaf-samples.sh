@@ -57,25 +57,25 @@ java -jar brix-tool-pafclient-0.3-jar-with-dependencies.jar -m POST \
 java -jar brix-tool-pafclient-0.3-jar-with-dependencies.jar -m POST \
 	-h "Content-Type: application/vnd.pearson.paf.v1.envelope+json;body=\"application/vnd.pearson.paf.v1.assignment+json\"\"" \
 	-u http://repo.paf.dev.pearsoncmg.com/paf-repo/resources/activities -c \
-	-d sanvan_mcq.assign.json 
+	-d sanvan_slider_ds.assign.json
 # -d sanvan_slider_ds.assign.json
 
 # Update Activity
 java -jar brix-tool-pafclient-0.2-jar-with-dependencies.jar -m PUT \
 	-h "Content-Type: application/vnd.pearson.paf.v1.envelope+json;body=\"application/vnd.pearson.paf.v1.assignment+json\"\"" \
 	-d sanvan_mcq.assign.json \
-	-u http://repo.paf.cert.pearsoncmg.com/paf-repo/resources/activities/test.sanvan.activity.mcq1b -c
+	-u http://repo.paf.cert.pearsoncmg.com/paf-repo/resources/activities/test.sanvan.activity.mcq1a -c
 
 # Update Assignment
 java -jar brix-tool-pafclient-0.2-jar-with-dependencies.jar -m PUT \
 	-h "Content-Type: application/vnd.pearson.paf.v1.envelope+json;body=\"application/vnd.pearson.paf.v1.assignment+json\"\"" \
+	-u http://repo.paf.cert.pearsoncmg.com/paf-repo/resources/activities/test.sanvan.assign.mcq1a -c
 	-d sanvan_mcq.assign.json \
-	-u http://repo.paf.cert.pearsoncmg.com/paf-repo/resources/activities/test.sanvan.assign.mcq1b -c
 
 # To retrieve: notice the -m GET
 java -jar brix-tool-pafclient-0.3-jar-with-dependencies.jar -m GET \
 	-h "Accept:application/vnd.pearson.sanvan.v1.activity" \
-	-u http://repo.paf.dev.pearsoncmg.com/paf-repo/resources/activities/d346f3f7-29bb-459e-a352-1b3c257b4409 -c
+	-u http://repo.paf.dev.pearsoncmg.com/paf-repo/resources/activities/test.sanvan.activity.mcq1a -c
 
 java -jar brix-tool-pafclient-0.3-jar-with-dependencies.jar -m GET \
 	-h "Accept:application/vnd.pearson.paf.v1.assignment+json" \
@@ -83,7 +83,7 @@ java -jar brix-tool-pafclient-0.3-jar-with-dependencies.jar -m GET \
 
 # To retrieve: notice the -m GET
 java -jar brix-tool-pafclient-0.3-jar-with-dependencies.jar -m DELETE \
-	-u http://repo.paf.dev.pearsoncmg.com/paf-repo/resources/activities/test.sanvan.activity.mcq1b -c
+	-u http://repo.paf.dev.pearsoncmg.com/paf-repo/resources/activities/test.sanvan.activity.mcq1a -c
 
 ##########
 # Journal Question
