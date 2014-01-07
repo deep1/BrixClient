@@ -1,558 +1,568 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="Author" content="Leslie Bondaryk" />
-	<meta name="Owner" content="Pearson" />
-	<meta name="Copyright" content="Copyright (c) 2013 Pearson. All rights reserved." />
-	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
-	<meta content="Carmen Santiago, Demo Book" name="description" />
-	<title class="setTitle"></title>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Leslie Bondaryk" />
+    <meta name="Owner" content="Pearson" />
+    <meta name="Copyright" content="Copyright (c) 2013 Pearson. All rights reserved." />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="Carmen Santiago, Demo Book" name="description" />
+    <title class="setTitle"></title>
 
     <!-- bootstrap_plus.css contains styling for the dropdown menu and other common core styles -->
     <link href="css/bootstrap_plus.css" rel="stylesheet" media="screen">
-  	
-  	<!-- widgets.css contains styling for the interactive brix -->
-	<link href="css/widgets.css" rel="stylesheet">
 
-	<!-- eCourse-master.css contains styling for all the navigation -->
-	<link href="css/eCourse-master.css" rel="stylesheet" media="screen">
+    <!-- widgets.css contains styling for the interactive brix -->
+    <link href="css/widgets.css" rel="stylesheet">
 
-	<!-- content_styles.css contains styling for the narrative layout and responsive design -->
-	<link href="css/content_styles.css" rel="stylesheet" media="screen">
+    <!-- eCourse-master.css contains styling for all the navigation -->
+    <link href="css/eCourse-master.css" rel="stylesheet" media="screen">
+
+    <!-- content_styles.css contains styling for the narrative layout and responsive design -->
+    <link href="css/content_styles.css" rel="stylesheet" media="screen">
 </head>
 <body>
-	<div class="container">
-		<div class="span12 lc_ec_page">
-			<section class="lc_ec_fiftyFifty lc_ec_pageInner">
-       	 		<div class="lc_ec_content">
-       	 			<h2 class="lc_ec_bHead"><span class='number setId'></span> 
-											<span class="setTitle"></span>
-					</h2>
-		 			<div class="lc_ec_leading">
-						<div id="widgetTarget0"><p>0. Single image with labels</p></div>
-						<div id="newBruce"><p>1. Line Graph with labels and callouts (events)</p></div>
-						<div id="phaseCall"></div>
-						<div id="oceans"><p>1a. Image carousel with alpha labels</p></div>
-					</div>
-					<div class="lc_ec_trailing">
-						<div id="widgetTarget50n"><p>2. Label positions</p></div>
-                		<div id="lineMarks"><p>3. x-axis Line Markers x and y</p></div>
-                		<div id="lineMarks1"><p>4. x-axis Line Markers just labels. Note that our handling of different label lengths is not very sophisticated. Of course, maybe if the label runs on that long it shouldn't be a label? Also nothing to prevent labels from obscuring each other if the markers are close together.</p></div>
-					</div>
-				</div>
-			</section>
-		</div>
-	</div>
+    <div class="container">
+        <div class="span12 lc_ec_page">
+            <section class="lc_ec_fiftyFifty lc_ec_pageInner">
+                <div class="lc_ec_content">
+                    <h2 class="lc_ec_bHead">
+                        <span class='number setId'></span>
+                        <span class="setTitle"></span>
+                    </h2>
+                    <div class="lc_ec_leading">
+                       <div id="widgetTarget0"><p>0. Single image with labels</p></div>
+                       <div id="newBruce"><p>1. Line Graph with labels and callouts (events)</p></div>
+                       <div id="phaseCall"></div>
+                       <div id="oceans"><p>1a. Image carousel with alpha labels</p></div>
+                   </div>
+                    <div class="lc_ec_trailing">
+                        <div id="widgetTarget50n"><p>2. Label positions</p></div>
+                        <div id="lineMarks"><p>3. x-axis Line Markers x and y</p></div>
+                        <div id="lineMarks1"><p>4. x-axis Line Markers just labels. Note that our handling of different label lengths is not very sophisticated. Of course, maybe if the label runs on that long it shouldn't be a label? Also nothing to prevent labels from obscuring each other if the markers are close together.</p></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
 
-	<script src="js/jquery-latest.js"></script>
+    <script src="js/jquery-latest.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery-ui-1.10.2.custom.js"></script>
-	<script src="js/toc-structure.js"></script>
-	<script src="js/eCourse-master.js"></script>
-	<script src="js/d3.v3.min.js"></script>
+    <script src="js/toc-structure.js"></script>
+    <script src="js/eCourse-master.js"></script>
+    <script src="js/d3.v3.min.js"></script>
 
-	<!--script src="js/brixlib-compiled.js"></script-->
+    <!--script src="js/brixlib-compiled.js"></script-->
 
-	<!--script src="js/goog/base.js"></script>
-	<script src="js/brixlib-deps.js"></script>
+    <!--script src="js/goog/base.js"></script>
+    <script src="js/brixlib-deps.js"></script>
     <script>
         goog.require('pearson.brix.LabelGroup');
     </script-->
 
-	<script src="js/goog/base.js"></script>
-	<script src="../src/pearson/utils/eventmanager.js"></script>
-	<script src="../src/pearson/brix/widget-base.js"></script>
-	<script src="../src/pearson/brix/widget-prototype-axes.js"></script>
-	<script src="../src/pearson/brix/widget-linegraph.js"></script>
-	<script src="../src/pearson/brix/widget-labelgroup.js"></script>
+    <script src="js/goog/base.js"></script>
+    <script src="../src/pearson/utils/eventmanager.js"></script>
+    <script src="../src/pearson/brix/widget-base.js"></script>
+    <script src="../src/pearson/brix/widget-prototype-axes.js"></script>
+    <script src="../src/pearson/brix/widget-linegraph.js"></script>
+    <script src="../src/pearson/brix/widget-labelgroup.js"></script>
     <script src="../src/pearson/brix/widget-markergroup.js"></script>
     <script src="../src/pearson/brix/widget-callouts.js"></script>
-	<script src="../src/pearson/brix/widget-image.js"></script>
-	<script src="../src/pearson/brix/widget-carousel.js"></script>
-	<script src="../src/pearson/brix/widget-imageviewer.js"></script>
+    <script src="../src/pearson/brix/widget-image.js"></script>
+    <script src="../src/pearson/brix/widget-carousel.js"></script>
+    <script src="../src/pearson/brix/widget-imageviewer.js"></script>
 
 <script>
     pearson.utils.logToConsole(true, 'FINER', 'pearson');
 // local aliases for convenience
-	var EventManager = pearson.utils.EventManager;
-	var Rect = pearson.utils.Rect;
-	var Size = pearson.utils.Size;
-	var SVGContainer = pearson.brix.SVGContainer;
-	var Image = pearson.brix.Image;
-	var CaptionedImage = pearson.brix.CaptionedImage;
-	var Carousel = pearson.brix.Carousel;
-	var ImageViewer = pearson.brix.ImageViewer;
-	var Callouts = pearson.brix.Callouts;
-	var LabelGroup = pearson.brix.LabelGroup;
-	var MarkerGroup = pearson.brix.MarkerGroup;
-	var BarChart = pearson.brix.BarChart;
-	var LineGraph = pearson.brix.LineGraph;
-	var Legend = pearson.brix.Legend;
+    var EventManager = pearson.utils.EventManager;
+    var Rect = pearson.utils.Rect;
+    var Size = pearson.utils.Size;
+    var SVGContainer = pearson.brix.SVGContainer;
+    var Image = pearson.brix.Image;
+    var CaptionedImage = pearson.brix.CaptionedImage;
+    var Carousel = pearson.brix.Carousel;
+    var ImageViewer = pearson.brix.ImageViewer;
+    var Callouts = pearson.brix.Callouts;
+    var LabelGroup = pearson.brix.LabelGroup;
+    var MarkerGroup = pearson.brix.MarkerGroup;
+    var BarChart = pearson.brix.BarChart;
+    var LineGraph = pearson.brix.LineGraph;
+    var Legend = pearson.brix.Legend;
 
-	var eventManager = new EventManager();
+    var eventManager = new EventManager();
 
-var birth = [
-		{ x:  0, y: 2.0	},
-		{ x:  1, y: 1.95 },
-		{ x:  2, y: 1.9 },
-		{ x:  3, y: 1.85 },
-		{ x:  4, y: 1.9	 },
-		{ x:  5, y: 1.95 },
-		{ x:  6, y: 2.0	 },
-		{ x:  7, y: 1.95 },
-		{ x:  8, y: 1.9	 },
-		{ x:  9, y: 1.85 },
-		{ x: 10, y: 1.9 },
-		{ x: 11, y: 1.95 },
-		{ x: 12, y: 2.0 },
-		{ x: 13, y: 1.95 },
-		{ x: 14, y: 1.9 },
-		{ x: 15, y: 1.85 },
-		{ x: 16, y: 1.9 },
-		{ x: 17, y: 1.95 },
-		{ x: 18, y: 1.96 },
-		{ x: 19, y: 1.95 },
-		{ x: 20, y: 1.94 },
-		{ x: 21, y: 1.93 },
-		{ x: 22, y: 1.94 },
-		{ x: 23, y: 1.95 },
-		{ x: 24, y: 1.94 },
-		{ x: 25, y: 1.93 },
-		{ x: 26, y: 1.8 },
-		{ x: 27, y: 1.7 },
-		{ x: 28, y: 1.6 },
-		{ x: 29, y: 1.5 },
-		{ x: 30, y: 1.4 },
-		{ x: 31, y: 1.3 },
-		{ x: 32, y: 1.2 },
-		{ x: 33, y: 1.1 },
-		{ x: 34, y: 1.0 },
-		{ x: 35, y: 0.9 },
-		{ x: 36, y: 0.8 },
-		{ x: 37, y: 0.7 },
-		{ x: 38, y: 0.6 },
-		{ x: 39, y: 0.5 },
-		{ x: 40, y: 0.4 },
-		{ x: 41, y: 0.35 },
-		{ x: 42, y: 0.35 },
-		{ x: 43, y: 0.34 },
-		{ x: 44, y: 0.33 },
-		{ x: 45, y: 0.33 },
-		{ x: 46, y: 0.32 },
-		{ x: 47, y: 0.33 },
-		{ x: 48, y: 0.31 },
-		{ x: 49, y: 0.29 },
-		{ x: 50, y: 0.25 },
-		{ x: 51, y: 0.198 },
-		{ x: 52, y: 0.2 },
-		{ x: 53, y: 0.19 },
-		{ x: 54, y: 0.18 },
-		{ x: 55, y: 0.175 },
-		{ x: 56, y: 0.172 },
-		{ x: 57, y: 0.16 },
-		{ x: 58, y: 0.155 },
-		{ x: 59, y: 0.153 },
-		{ x: 60, y: 0.151 },
-		{ x: 61, y: 0.15 },
-		{ x: 62, y: 0.145 },
-		{ x: 63, y: 0.145 },
-		{ x: 64, y: 0.15 },
-		{ x: 65, y: 0.145 }];
- 
-var death = [
-		{ x:  0, y: 1.95 },
-		{ x:  1, y: 1.95 },
-		{ x:  2, y: 1.98 },
-		{ x:  3, y: 1.95 },
-		{ x:  4, y: 1.95 },
-		{ x:  5, y: 1.98 },
-		{ x:  6, y: 1.95 },
-		{ x:  7, y: 1.88 },
-		{ x:  8, y: 1.85 },
-		{ x:  9, y: 1.85 },
-		{ x: 10, y: 1.84 },
-		{ x: 11, y: 1.8 },
-		{ x: 12, y: 1.7 },
-		{ x: 13, y: 1.6 },
-		{ x: 14, y: 1.5 },
-		{ x: 15, y: 1.4 },
-		{ x: 16, y: 1.3 },
-		{ x: 17, y: 1.2 },
-		{ x: 18, y: 1.1 },
-		{ x: 19, y: 0.9 },
-		{ x: 20, y: 0.8 },
-		{ x: 21, y: 0.7 },
-		{ x: 22, y: 0.55 },
-		{ x: 23, y: 0.45 },
-		{ x: 24, y: 0.35 },
-		{ x: 25, y: 0.2 },
-		{ x: 26, y: 0.195 },
-		{ x: 27, y: 0.19 },
-		{ x: 28, y: 0.18 },
-		{ x: 29, y: 0.19 },
-		{ x: 30, y: 0.195 },
-		{ x: 31, y: 0.2 },
-		{ x: 32, y: 0.195 },
-		{ x: 33, y: 0.19 },
-		{ x: 34, y: 0.195 },
-		{ x: 35, y: 0.198 },
-		{ x: 36, y: 0.2 },
-		{ x: 37, y: 0.2 },
-		{ x: 38, y: 0.19 },
-		{ x: 39, y: 0.18 },
-		{ x: 40, y: 0.19 },
-		{ x: 41, y: 0.195 },
-		{ x: 42, y: 0.2 },
-		{ x: 43, y: 0.195 },
-		{ x: 44, y: 0.198 },
-		{ x: 45, y: 0.2 },
-		{ x: 46, y: 0.2 },
-		{ x: 47, y: 0.195 },
-		{ x: 48, y: 0.192 },
-		{ x: 49, y: 0.192 },
-		{ x: 50, y: .19 },
-		{ x: 51, y: .198 },
-		{ x: 52, y: 0.2 },
-		{ x: 53, y: 0.19 },
-		{ x: 54, y: 0.18 },
-		{ x: 55, y: 0.198 },
-		{ x: 56, y: 0.195 },
-		{ x: 57, y: 0.2 },
-		{ x: 58, y: 0.19 },
-		{ x: 59, y: 0.195 },
-		{ x: 60, y: 0.198 },
-		{ x: 61, y: 0.193 },
-		{ x: 62, y: .145 },
-		{ x: 63, y: 0.192 },
-		{ x: 64, y: 0.198 },
-		{ x: 65, y: 0.199 }];
+    var birth = [
+        { x:  0, y: 2.0 },
+        { x:  1, y: 1.95 },
+        { x:  2, y: 1.9 },
+        { x:  3, y: 1.85 },
+        { x:  4, y: 1.9 },
+        { x:  5, y: 1.95 },
+        { x:  6, y: 2.0 },
+        { x:  7, y: 1.95 },
+        { x:  8, y: 1.9 },
+        { x:  9, y: 1.85 },
+        { x: 10, y: 1.9 },
+        { x: 11, y: 1.95 },
+        { x: 12, y: 2.0 },
+        { x: 13, y: 1.95 },
+        { x: 14, y: 1.9 },
+        { x: 15, y: 1.85 },
+        { x: 16, y: 1.9 },
+        { x: 17, y: 1.95 },
+        { x: 18, y: 1.96 },
+        { x: 19, y: 1.95 },
+        { x: 20, y: 1.94 },
+        { x: 21, y: 1.93 },
+        { x: 22, y: 1.94 },
+        { x: 23, y: 1.95 },
+        { x: 24, y: 1.94 },
+        { x: 25, y: 1.93 },
+        { x: 26, y: 1.8 },
+        { x: 27, y: 1.7 },
+        { x: 28, y: 1.6 },
+        { x: 29, y: 1.5 },
+        { x: 30, y: 1.4 },
+        { x: 31, y: 1.3 },
+        { x: 32, y: 1.2 },
+        { x: 33, y: 1.1 },
+        { x: 34, y: 1.0 },
+        { x: 35, y: 0.9 },
+        { x: 36, y: 0.8 },
+        { x: 37, y: 0.7 },
+        { x: 38, y: 0.6 },
+        { x: 39, y: 0.5 },
+        { x: 40, y: 0.4 },
+        { x: 41, y: 0.35 },
+        { x: 42, y: 0.35 },
+        { x: 43, y: 0.34 },
+        { x: 44, y: 0.33 },
+        { x: 45, y: 0.33 },
+        { x: 46, y: 0.32 },
+        { x: 47, y: 0.33 },
+        { x: 48, y: 0.31 },
+        { x: 49, y: 0.29 },
+        { x: 50, y: 0.25 },
+        { x: 51, y: 0.198 },
+        { x: 52, y: 0.2 },
+        { x: 53, y: 0.19 },
+        { x: 54, y: 0.18 },
+        { x: 55, y: 0.175 },
+        { x: 56, y: 0.172 },
+        { x: 57, y: 0.16 },
+        { x: 58, y: 0.155 },
+        { x: 59, y: 0.153 },
+        { x: 60, y: 0.151 },
+        { x: 61, y: 0.15 },
+        { x: 62, y: 0.145 },
+        { x: 63, y: 0.145 },
+        { x: 64, y: 0.15 },
+        { x: 65, y: 0.145 }
+    ];
 
-// Calculate the population growth from the birth and death data		
-var dataPts = birth.length;
-var popGrowth = [];
-for (i = 0; i < dataPts; i++)
-{
-	popGrowth[i] = {x: birth[i].x,
-					y: birth[i].y - death[i].y};
-}
-		
-	
-	//<div id="widgetTarget0"><p>0. Labels on an Image</p></div>
-	var ecofoot = new Image(
-		{ 
-			URI: 'img/FG12_5_3.jpg',
-			caption: "Examples of ecological footprints",
-			actualSize: {width: 600, height: 400}
-		}
-	);
-	
-	var svg0 = new SVGContainer(
-		{node: d3.select("#widgetTarget0"),
-		maxSize: {width: 477, height: 350}
-		}
-	);
-		
-	
-	var ecoLabels = new LabelGroup({
-		labels: 	
-		   [	
-			{content: "United States",	xyPos: [0,.2], width: 180},
-			{content: "European Union",	xyPos:[0.36,0.2], width: 180},
-			{content: "Afghanistan", xyPos:[0.8,0.2], 
-			//scale on the image is 0 to 1, so I want this label to be 8/10 of the way across, 
-			//and 1/5 from the bottom, so xyPos is 80% and 20%
-			width: 180	},
-			{content:"23 Acres/person",	xyPos:[0,1], width: 180},
-			{content:"11.5 acres/person", xyPos:[0.36,.7], width: 180	},
-			{content:"1 acre/ person", xyPos:[0.7,0.5], width: 180}
-		  ]
-		});
-	
-	
-	ecofoot.append(ecoLabels);
-	svg0.append(ecofoot);
-	
-	
-	//	<div id="newBruce"><p>1. Graph with Labels</p></div>
-	var newCont = new SVGContainer({
-		node: d3.select("#newBruce"),
-		maxSize: {width: 477, height: 380}
-		}
-	);
-	
-	// configure the birth/death graph
-	var newGraph = new LineGraph({
-		id: "newHot",
-		type: "lines",
-		Data: [birth,death,popGrowth, [{x:0,y:-0.5}]],
-		xAxisFormat: {
-						type: "linear",
-						ticks: 0,
-						orientation: "bottom",
-						label: "Time",	},
-		yAxisFormat: {
-						type: "linear",
-						ticks: 0,
-						orientation: "left",}
-	});
-	
-	// draw newGraph in the container newCont
-	newCont.append(newGraph, {topPercentOffset: 0, leftPercentOffset: 0, heightPercent: 1, widthPercent: 1});
+    var death = [
+        { x:  0, y: 1.95 },
+        { x:  1, y: 1.95 },
+        { x:  2, y: 1.98 },
+        { x:  3, y: 1.95 },
+        { x:  4, y: 1.95 },
+        { x:  5, y: 1.98 },
+        { x:  6, y: 1.95 },
+        { x:  7, y: 1.88 },
+        { x:  8, y: 1.85 },
+        { x:  9, y: 1.85 },
+        { x: 10, y: 1.84 },
+        { x: 11, y: 1.8 },
+        { x: 12, y: 1.7 },
+        { x: 13, y: 1.6 },
+        { x: 14, y: 1.5 },
+        { x: 15, y: 1.4 },
+        { x: 16, y: 1.3 },
+        { x: 17, y: 1.2 },
+        { x: 18, y: 1.1 },
+        { x: 19, y: 0.9 },
+        { x: 20, y: 0.8 },
+        { x: 21, y: 0.7 },
+        { x: 22, y: 0.55 },
+        { x: 23, y: 0.45 },
+        { x: 24, y: 0.35 },
+        { x: 25, y: 0.2 },
+        { x: 26, y: 0.195 },
+        { x: 27, y: 0.19 },
+        { x: 28, y: 0.18 },
+        { x: 29, y: 0.19 },
+        { x: 30, y: 0.195 },
+        { x: 31, y: 0.2 },
+        { x: 32, y: 0.195 },
+        { x: 33, y: 0.19 },
+        { x: 34, y: 0.195 },
+        { x: 35, y: 0.198 },
+        { x: 36, y: 0.2 },
+        { x: 37, y: 0.2 },
+        { x: 38, y: 0.19 },
+        { x: 39, y: 0.18 },
+        { x: 40, y: 0.19 },
+        { x: 41, y: 0.195 },
+        { x: 42, y: 0.2 },
+        { x: 43, y: 0.195 },
+        { x: 44, y: 0.198 },
+        { x: 45, y: 0.2 },
+        { x: 46, y: 0.2 },
+        { x: 47, y: 0.195 },
+        { x: 48, y: 0.192 },
+        { x: 49, y: 0.192 },
+        { x: 50, y: .19 },
+        { x: 51, y: .198 },
+        { x: 52, y: 0.2 },
+        { x: 53, y: 0.19 },
+        { x: 54, y: 0.18 },
+        { x: 55, y: 0.198 },
+        { x: 56, y: 0.195 },
+        { x: 57, y: 0.2 },
+        { x: 58, y: 0.19 },
+        { x: 59, y: 0.195 },
+        { x: 60, y: 0.198 },
+        { x: 61, y: 0.193 },
+        { x: 62, y: .145 },
+        { x: 63, y: 0.192 },
+        { x: 64, y: 0.198 },
+        { x: 65, y: 0.199 }
+    ];
 
-	var newLabels = new LabelGroup(
-		{id: "phaseLabel",
-		labels: 	
-		  [	
-			{content: "Pre-development", xyPos: [0,-.25], width: 100, key: "pre"},
-			{content: "Developing",	xyPos:[13,-.25], width: 85, key: "Dev0"},
-			{content: "Modernizing", xyPos:[26,-.25], width: 90, key: "Modern"},
-			{content:"Developed",	xyPos:[40,-.25], width: 85, key: "Dev1"},
-			{content:"Post-development", xyPos:[51,-.25], width: 100, key: "Post"},
-		  ]
-		}, eventManager);
-		
-	// write the labels onto the graph in the local coordinates, inside the 
-	// data area
-	newGraph.append(newLabels);
-	
-	//make a set of callouts in a table that lights up with the labels.
-	var phases = new Callouts ({
-		id: "phaseDesc",
-		headers: ["Period", "Characteristics"],
-		show: "all",
-		textBits: [
-			{key: "pre",
-			cols: ["Pre-development",
-	 			"High birth and death rates offset each other, so the population grows slowly."]
-			},
-			{key: "Dev0",
-			cols: ["Developing","As a country's economy becomes stronger, medical care, clean water, and food are more available. The death rate declines and the birth rate remains high, so the population grows more rapidly." ]
-			},
-			{key: "Modern",
-			cols: ["Modernizing", "Economic, educational, and social changes cause declines in the birth rate. Population growth starts to slow."]
-			},
-	 		{key: "Dev1",
-			cols: ["Developed", "Birth and death rates fall to low levels, slowing population growth."]
-			},
-			{key: "Post",
-			cols: ["Post-development", "In highly developed countries, the birth rate is falling while the death rate is relatively constant. The population growth rate is negative and the population declines."]}]
-	}, eventManager);
+    // Calculate the population growth from the birth and death data
+    var dataPts = birth.length;
+    var popGrowth = [];
+    for (i = 0; i < dataPts; i++)
+    {
+        popGrowth[i] = {
+            x: birth[i].x,
+            y: birth[i].y - death[i].y
+        };
+    }
 
-	phases.draw(d3.select("#phaseCall"));
 
-	// <div id="oceans"><p>1a. alpha labels on image carousel</p></div>
-	var svg3D = new SVGContainer({
-		node: d3.select("#oceans"),
-		maxSize: {width: 477, height: 420}
-	});
-	
-	var layers = new ImageViewer({
-		items:
-			[
-				new Image({
-				URI: 'img/oceans/oceanTemp0m.png',
-				caption: "",
-				actualSize: {height: 530, width: 930}
-				}),
-				new Image({
-				URI: 'img/oceans/oceanTemp500m.png',
-				caption: "",
-				actualSize: {height: 530, width: 930}
-				}),
-				new Image({
-				URI: 'img/oceans/oceanTemp1000m.png',
-				caption: "",
-				actualSize: {height: 530, width: 930}
-				}),
-				new Image({
-				URI: 'img/oceans/oceanTemp2500m.png',
-				caption: "",
-				actualSize: {height: 530, width: 930}
-				})
-			],
-	}, eventManager);
+    //<div id="widgetTarget0"><p>0. Labels on an Image</p></div>
+    var ecofoot = new Image(
+        {
+            URI: 'img/FG12_5_3.jpg',
+            caption: "Examples of ecological footprints",
+            actualSize: {width: 600, height: 400}
+        }
+    );
 
-svg3D.append(layers);
-							
-var Oceanlabels = new LabelGroup(
-		{type: "latin-upper",
-		labels: 	
-		  [	
-			{content: "", xyPos:[0.47, 0.62], width: 0, key: "A"},
-			{content: "", xyPos:[0.76, 0.62], width: 0, key: "B"},
-			{content: "", xyPos:[0.6, 0.5], width: 0, key: "C"},
-			{content: "", xyPos:[0.74, 0.32], width: 0, key: "D"},
-			{content: "", xyPos:[0.31, 0.25], width: 0, key: "E"},
-		  ]
-		});
-		
-	// write the labels onto the graph in the local coordinates, inside the 
-	// data area
-	svg3D.append(Oceanlabels);
+    var svg0 = new SVGContainer(
+        {
+            node: d3.select("#widgetTarget0"),
+            maxSize: {width: 477, height: 350}
+        }
+    );
 
-	//	<div id="widgetTarget50"><p>Labels in grid</p></div>
-	var cntrConfig50 = {
-			node: d3.select("#widgetTarget50n"),
-			maxWid: 500,
-			maxHt: 300
-		};
 
-	var lblGrpConfig50 = {
-			//id: "lbls50",
-			type: "numbered",
-			labels: 	
-			[
-				{ content: "TOP left",		xyPos: [0,   1],	width: 110	},
-				{ content: "middle left",	xyPos: [0,   0.5],	width: 140	},
-				{ content: "Bottom left" ,	xyPos: [0,   0],	width: 140	},
-				{ content: "top middle",	xyPos: [0.5, 1],	width: 130	},
-				{ content: "center",		xyPos: [0.5, 0.5],	width: 110	},
-				{ content: "bottom middle",	xyPos: [0.5, 0],	width: 110	},
-				{ content: "TOP right",		xyPos: [1,   1],	width: 50	},
-				{ content: "middle right",	xyPos: [1,   0.5],	width: 250	},
-				{ content: "width 100 at 1/4,1/4",
-											xyPos: [0.25, 0.25],	width:  100	},
-				{ content: "width 150 at 3/4,3/4 with extended &copy; chars",
-											xyPos: [0.75, 0.75],	width: 150	},
-				{ content: '3/4,1/4 with forn fields <input type="range" min="0" max="2.5" />', 
-											xyPos: [0.75, 0.25],	width: 150	},
-				{ content: "with bullet",	xyPos: [0.25, 0.75],	width:  80, bullet: "circle"	}		
-			]
-		};
+    var ecoLabels = new LabelGroup(
+        {
+            labels: [
+                { content: "United States",     xyPos: [0, 0.2],      width: 180 },
+                { content: "European Union",    xyPos: [0.36, 0.2],   width: 180 },
+                //scale on the image is 0 to 1, so I want this label to be 8/10 of the way across,
+                //and 1/5 from the bottom, so xyPos is 80% and 20%
+                { content: "Afghanistan",       xyPos: [0.8, 0.2],  width: 180 },
+                { content: "23 Acres/person",   xyPos:[0,1],        width: 180 },
+                { content: "11.5 acres/person", xyPos:[0.36,.7],    width: 180 },
+                { content: "1 acre/ person",    xyPos:[0.7,0.5],    width: 180 }
+            ]
+        }
+    );
 
-	var cntr50 = new SVGContainer(cntrConfig50);
-	var labelGroup50 = new LabelGroup(lblGrpConfig50);
-	cntr50.append(labelGroup50);
 
-//	<div id="lineMarks"><p>5. x-axis Line Markers (data only) </p></div>
+    ecofoot.append(ecoLabels);
+    svg0.append(ecofoot);
 
-	var svgMark = new SVGContainer(
-		{node: d3.select("#lineMarks"),
-		maxWid: 500,
-		maxHt: 400
-		}
-	);
-	
-	// configure the graph
-	var markGraph = new LineGraph({
-		type: "lines",
-		Data: [birth,death],
-		xAxisFormat: {
-						type: "linear",
-						ticks: 5,
-						orientation: "bottom",
-						label: "Time",	},
-		yAxisFormat: {
-						type: "linear",
-						ticks: 0,
-						orientation: "left",
-						label: "Population"}
-	});
-	
-		// draw Graph 
-	svgMark.append(markGraph, {topPercentOffset: .2, leftPercentOffset: 0, heightPercent: .8, widthPercent: 1});
 
-	var newMarks = new MarkerGroup(
-		{
-		marks: 	
-		  [	
-			birth[5],
-			death[40],
-		  ]
-		}, eventManager);
-		
-	// write the labels onto the graph in the local coordinates, inside the 
-	// data area.  These are designed to slop over the top, that's why the
-	// graph is written to the bottom 80% of SVG area
-	markGraph.append(newMarks);
-	
+    //    <div id="newBruce"><p>1. Graph with Labels</p></div>
+    var newCont = new SVGContainer({
+        node: d3.select("#newBruce"),
+        maxSize: {width: 477, height: 380}
+    });
 
-//	<div id="lineMarks"><p>6. x-axis multiple label Markers</p></div>
-	
-	var svgMark4 = new SVGContainer(
-		{node: d3.select("#lineMarks1"),
-		maxWid: 500,
-		maxHt: 400
-		}
-	);
+    // configure the birth/death graph
+    var newGraph = new LineGraph({
+        id: "newHot",
+        type: "lines",
+        Data: [birth,death,popGrowth, [{x:0,y:-0.5}]],
+        xAxisFormat: {
+            type: "linear",
+            ticks: 0,
+            orientation: "bottom",
+            label: "Time",
+        },
+        yAxisFormat: {
+            type: "linear",
+            ticks: 0,
+            orientation: "left"
+        }
+    });
 
-	// configure the graph
-	var markGraph4 = new LineGraph({
-		type: "lines",
-		Data: [birth,death],
-		xAxisFormat: {
-						type: "linear",
-						ticks: 5,
-						orientation: "bottom",
-						label: "Time",	},
-		yAxisFormat: {
-						type: "linear",
-						ticks: 0,
-						orientation: "right",
-						label: "Population"}
-	});
+    // draw newGraph in the container newCont
+    newCont.append(newGraph, {topPercentOffset: 0, leftPercentOffset: 0, heightPercent: 1, widthPercent: 1});
 
-		
-			// draw Graph 
-	svgMark4.append(markGraph4, {topPercentOffset: .2, leftPercentOffset: 0, heightPercent: .8, widthPercent: 1});
+    var newLabels = new LabelGroup({
+        id: "phaseLabel",
+        labels: [
+            { content: "Pre-development",   xyPos: [0,-.25],    width: 100, key: "pre" },
+            { content: "Developing",        xyPos: [13,-.25],   width: 85,  key: "Dev0" },
+            { content: "Modernizing",       xyPos: [26,-.25],   width: 90,  key: "Modern" },
+            { content: "Developed",         xyPos: [40,-.25],   width: 85,  key: "Dev1" },
+            { content: "Post-development",  xyPos: [51,-.25],   width: 100, key: "Post" },
+        ]
+    }, eventManager);
 
-	var newMarks4 = new MarkerGroup(
-		{
-		marks: 	
-		 [
-		 {x: 8, label: "An early year partially obscured"},
-		 {x: 20, label: "a later year"},
-		 {x: 45, label: "the latest year with a long description that runs over and gets really long"}]
-		}, eventManager);
-		
-	// write the labels onto the graph in the local coordinates, inside the 
-	// data area.  These are designed to slop over the top, that's why the
-	// graph is written to the bottom 80% of SVG area
-	markGraph4.append(newMarks4);
-		
-		
-		
-//events
-	
-// Handle changes of the label selection
- 
+    // write the labels onto the graph in the local coordinates, inside the
+    // data area
+    newGraph.append(newLabels);
 
-//Test: set the start highlight state of 0 index by calling the 
-//handler with a hard-set index of 0.  This should result in the
-//first label getting highlighted and the first callout being displayed.
-handleSelectionChanged({selectKey: "Post"});
+    //make a set of callouts in a table that lights up with the labels.
+    var phases = new Callouts ({
+        id: "phaseDesc",
+        headers: ["Period", "Characteristics"],
+        show: "all",
+        textBits: [
+            {
+                key: "pre",
+                cols: ["Pre-development", "High birth and death rates offset each other, so the population grows slowly."]
+            },
+            {
+                key: "Dev0",
+                cols: ["Developing","As a country's economy becomes stronger, medical care, clean water, and food are more available. The death rate declines and the birth rate remains high, so the population grows more rapidly." ]
+            },
+            {
+                key: "Modern",
+                cols: ["Modernizing", "Economic, educational, and social changes cause declines in the birth rate. Population growth starts to slow."]
+            },
+            {
+                key: "Dev1",
+                cols: ["Developed", "Birth and death rates fall to low levels, slowing population growth."]
+            },
+            {
+                key: "Post",
+                cols: ["Post-development", "In highly developed countries, the birth rate is falling while the death rate is relatively constant. The population growth rate is negative and the population declines."]
+            }
+        ]
+    }, eventManager);
 
-	
-	eventManager.subscribe(newLabels.selectedEventId,
-						   handleSelectionChanged);
-	eventManager.subscribe(phases.selectedEventId,
-						   handleSelectionChanged);
-	
-		
-	
-/************************************************************************
-* handleSelectionChanged                                            *//**
-*
-* handleInputValueChanged is called from the event handler for one of
-* the input widgets when the user changes its value. It updates the
-* given matching input widget's value to match the new value and then
-* updates the bar chart.
-*
-* @param eventDetails			These are the keyed values returned by 
-*								the event, in this case, a selection
-*								(click).
-*************************************************************************/
-	function handleSelectionChanged(eventDetails)
-	{
-		//Handler needs to get written into each page, 
-		//each widget will have it's own way of responding  
-		//LabelLite should be a method of Labels, once Labels
-		//is written as a constructor
-		newLabels.lite(eventDetails.selectKey);
-		phases.lite(eventDetails.selectKey);
-		
-	}
+    phases.draw(d3.select("#phaseCall"));
+
+    // <div id="oceans"><p>1a. alpha labels on image carousel</p></div>
+    var svg3D = new SVGContainer({
+        node: d3.select("#oceans"),
+        maxSize: {width: 477, height: 420}
+    });
+
+    var layers = new ImageViewer({
+        items:
+        [
+            new Image({
+                URI: 'img/oceans/oceanTemp0m.png',
+                caption: "",
+                actualSize: {height: 530, width: 930}
+            }),
+            new Image({
+                URI: 'img/oceans/oceanTemp500m.png',
+                caption: "",
+                actualSize: {height: 530, width: 930}
+            }),
+            new Image({
+                URI: 'img/oceans/oceanTemp1000m.png',
+                caption: "",
+                actualSize: {height: 530, width: 930}
+            }),
+            new Image({
+                URI: 'img/oceans/oceanTemp2500m.png',
+                caption: "",
+                actualSize: {height: 530, width: 930}
+            })
+        ],
+    }, eventManager);
+
+    svg3D.append(layers);
+
+    var Oceanlabels = new LabelGroup({
+        type: "latin-upper",
+        labels:
+        [
+            {content: "", xyPos:[0.47, 0.62], width: 0, key: "A"},
+            {content: "", xyPos:[0.76, 0.62], width: 0, key: "B"},
+            {content: "", xyPos:[0.6, 0.5], width: 0, key: "C"},
+            {content: "", xyPos:[0.74, 0.32], width: 0, key: "D"},
+            {content: "", xyPos:[0.31, 0.25], width: 0, key: "E"},
+        ]
+    });
+
+    // write the labels onto the graph in the local coordinates, inside the
+    // data area
+    svg3D.append(Oceanlabels);
+
+    //    <div id="widgetTarget50"><p>Labels in grid</p></div>
+    var cntrConfig50 = {
+        node: d3.select("#widgetTarget50n"),
+        maxWid: 500,
+        maxHt: 300
+    };
+
+    var lblGrpConfig50 = {
+        //id: "lbls50",
+        type: "numbered",
+        labels:
+        [
+            { content: "TOP left",        xyPos: [0,   1],    width: 110    },
+            { content: "middle left",    xyPos: [0,   0.5],    width: 140    },
+            { content: "Bottom left" ,    xyPos: [0,   0],    width: 140    },
+            { content: "top middle",    xyPos: [0.5, 1],    width: 130    },
+            { content: "center",        xyPos: [0.5, 0.5],    width: 110    },
+            { content: "bottom middle",    xyPos: [0.5, 0],    width: 110    },
+            { content: "TOP right",        xyPos: [1,   1],    width: 50    },
+            { content: "middle right",    xyPos: [1,   0.5],    width: 250    },
+            { content: "width 100 at 1/4,1/4",
+                                        xyPos: [0.25, 0.25],    width:  100    },
+            { content: "width 150 at 3/4,3/4 with extended &copy; chars",
+                                        xyPos: [0.75, 0.75],    width: 150    },
+            { content: '3/4,1/4 with forn fields <input type="range" min="0" max="2.5" />',
+                                        xyPos: [0.75, 0.25],    width: 150    },
+            { content: "with bullet",    xyPos: [0.25, 0.75],    width:  80, bullet: "circle"    }
+        ]
+    };
+
+    var cntr50 = new SVGContainer(cntrConfig50);
+    var labelGroup50 = new LabelGroup(lblGrpConfig50);
+    cntr50.append(labelGroup50);
+
+//    <div id="lineMarks"><p>5. x-axis Line Markers (data only) </p></div>
+
+    var svgMark = new SVGContainer({
+        node: d3.select("#lineMarks"),
+        maxWid: 500,
+        maxHt: 400
+    });
+
+    // configure the graph
+    var markGraph = new LineGraph({
+        type: "lines",
+        Data: [birth,death],
+        xAxisFormat: {
+            type: "linear",
+            ticks: 5,
+            orientation: "bottom",
+            label: "Time"
+        },
+        yAxisFormat: {
+            type: "linear",
+            ticks: 0,
+            orientation: "left",
+            label: "Population"
+        }
+    });
+
+        // draw Graph
+    svgMark.append(markGraph, {topPercentOffset: .2, leftPercentOffset: 0, heightPercent: .8, widthPercent: 1});
+
+    var newMarks = new MarkerGroup({
+        marks:
+        [
+            birth[5],
+            death[40],
+        ]
+    }, eventManager);
+
+    // write the labels onto the graph in the local coordinates, inside the
+    // data area.  These are designed to slop over the top, that's why the
+    // graph is written to the bottom 80% of SVG area
+    markGraph.append(newMarks);
+
+
+//    <div id="lineMarks"><p>6. x-axis multiple label Markers</p></div>
+
+    var svgMark4 = new SVGContainer({
+        node: d3.select("#lineMarks1"),
+        maxWid: 500,
+        maxHt: 400
+    });
+
+    // configure the graph
+    var markGraph4 = new LineGraph({
+        type: "lines",
+        Data: [birth,death],
+        xAxisFormat: {
+            type: "linear",
+            ticks: 5,
+            orientation: "bottom",
+            label: "Time",
+        },
+        yAxisFormat: {
+            type: "linear",
+            ticks: 0,
+            orientation: "right",
+            label: "Population"
+        }
+    });
+
+
+    // draw Graph
+    svgMark4.append(markGraph4, {topPercentOffset: .2, leftPercentOffset: 0, heightPercent: .8, widthPercent: 1});
+
+    var newMarks4 = new MarkerGroup({
+        marks:
+        [
+            {x: 8, label: "An early year partially obscured"},
+            {x: 20, label: "a later year"},
+            {x: 45, label: "the latest year with a long description that runs over and gets really long"}
+        ]
+    }, eventManager);
+
+    // write the labels onto the graph in the local coordinates, inside the
+    // data area.  These are designed to slop over the top, that's why the
+    // graph is written to the bottom 80% of SVG area
+    markGraph4.append(newMarks4);
+
+
+
+    //events
+
+    // Handle changes of the label selection
+
+
+    //Test: set the start highlight state of 0 index by calling the
+    //handler with a hard-set index of 0.  This should result in the
+    //first label getting highlighted and the first callout being displayed.
+    handleSelectionChanged({selectKey: "Post"});
+
+    eventManager.subscribe(newLabels.selectedEventId, handleSelectionChanged);
+    eventManager.subscribe(phases.selectedEventId, handleSelectionChanged);
+
+
+
+    /************************************************************************
+    * handleSelectionChanged                                            *//**
+    *
+    * handleInputValueChanged is called from the event handler for one of
+    * the input widgets when the user changes its value. It updates the
+    * given matching input widget's value to match the new value and then
+    * updates the bar chart.
+    *
+    * @param eventDetails            These are the keyed values returned by
+    *                                the event, in this case, a selection
+    *                                (click).
+    *************************************************************************/
+    function handleSelectionChanged(eventDetails)
+    {
+        //Handler needs to get written into each page,
+        //each widget will have it's own way of responding
+        //LabelLite should be a method of Labels, once Labels
+        //is written as a constructor
+        newLabels.lite(eventDetails.selectKey);
+        phases.lite(eventDetails.selectKey);
+
+    }
 </script>
 </body>
 </html>
