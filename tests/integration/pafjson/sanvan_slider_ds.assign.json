@@ -1,0 +1,33 @@
+
+{
+   "@context" : "http://purl.org/pearson/content/v1/ctx/metadata/envelope",
+   "@type" : "Envelope",
+   "metadata" : {
+     "title" : "Sanvan Multi-content Demo",
+     "guid" : "test.sanvan.assign.multicont",
+     "description" : "Sanvan MultipleChoiceQuestion demo",
+     "contentTypeTier1" : "Assessment",
+     "contentTypeTier2" : [ "AssessmentItem" ],
+     "subject" : [ "EnvironmentalScience" ],
+     "intendedEndUserRole" : [ "Student" ],
+     "timeRequired" : "PT20S",
+     "educationalAlignment" : [ "http://purl.org/pearson/objectives/183725473384362" ]
+   },
+   "body" : {
+     "@context" : "http://purl.org/pearson/paf/v1/ctx/core/StructuredAssignment",
+     "@type" : "StructuredAssignment",
+     "title" : "Sanvan Multi-content Demo",
+     "guid" : "test.sanvan.assign.multicont",
+     "assignmentContents" : {
+       "@contentType":"application/vnd.pearson.paf.v1.container+json",
+       "binding" : [
+           {
+           "boundActivity"  : "{SERVER}/paf-repo/resources/activities/test.sanvan.activity.multicont",
+           "activityFormat" : "application/vnd.pearson.sanvan.v1.activity",
+           "activityTitle" : "MultipleChoiceQuestion Sample multicont",
+           "credit" : "ForCredit",
+           "guid" : "test.sanvan.activity.multicont"
+         }]
+    }
+  }
+}

@@ -48,15 +48,17 @@ java -jar brix-tool-pafclient-0.2-jar-with-dependencies.jar -m PUT \
 # @id: http://repo.paf.cert.pearsoncmg.com/paf-repo/resources/activities/test.sanvan.activity.mcq1a
 java -jar brix-tool-pafclient-0.3-jar-with-dependencies.jar -m POST \
 	-h "Content-Type: application/vnd.pearson.paf.v1.envelope+json;body=\"application/vnd.pearson.sanvan.v1.activity\"\"" \
-	-d sanvan_mcq_item_1.activity.json \
-	-u http://repo.paf.dev.pearsoncmg.com/paf-repo/resources/activities -c
+	-u http://repo.paf.dev.pearsoncmg.com/paf-repo/resources/activities -c \
+	-d sanvan_mcq_item_1.activity.json 
+# -d sanvan_slider_ds_item.activity.json
 
 # Add Assignment
 # @id: http://repo.paf.cert.pearsoncmg.com/paf-repo/resources/activities/test.sanvan.assign.mcq1a
 java -jar brix-tool-pafclient-0.3-jar-with-dependencies.jar -m POST \
 	-h "Content-Type: application/vnd.pearson.paf.v1.envelope+json;body=\"application/vnd.pearson.paf.v1.assignment+json\"\"" \
-	-d sanvan_mcq.assign.json \
-	-u http://repo.paf.cert.pearsoncmg.com/paf-repo/resources/activities -c
+	-u http://repo.paf.dev.pearsoncmg.com/paf-repo/resources/activities -c \
+	-d sanvan_mcq.assign.json 
+# -d sanvan_slider_ds.assign.json
 
 # Update Activity
 java -jar brix-tool-pafclient-0.2-jar-with-dependencies.jar -m PUT \
@@ -73,7 +75,7 @@ java -jar brix-tool-pafclient-0.2-jar-with-dependencies.jar -m PUT \
 # To retrieve: notice the -m GET
 java -jar brix-tool-pafclient-0.3-jar-with-dependencies.jar -m GET \
 	-h "Accept:application/vnd.pearson.sanvan.v1.activity" \
-	-u http://repo.paf.cert.pearsoncmg.com/paf-repo/resources/activities/test.sanvan.activity.mcq1a -c
+	-u http://repo.paf.dev.pearsoncmg.com/paf-repo/resources/activities/d346f3f7-29bb-459e-a352-1b3c257b4409 -c
 
 java -jar brix-tool-pafclient-0.3-jar-with-dependencies.jar -m GET \
 	-h "Accept:application/vnd.pearson.paf.v1.assignment+json" \

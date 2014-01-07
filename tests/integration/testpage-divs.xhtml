@@ -1,0 +1,309 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>Brix test page</title>
+
+    <!-- bootstrap_plus.css contains styling for the dropdown menu and other common core styles -->
+    <link href="css/bootstrap_plus.css" rel="stylesheet" type="text/css" media="screen"/>
+    
+    <!-- widgets.css contains styling for the interactive brix -->
+    <link href="css/widgets.css" rel="stylesheet" type="text/css"/>
+
+    <!-- eCourse-master.css contains styling for all the navigation -->
+    <link href="css/eCourse-master.css" rel="stylesheet" type="text/css" media="screen"/>
+
+    <!-- content_styles.css contains styling for the narrative layout and responsive design -->
+    <link href="css/content_styles.css" rel="stylesheet" type="text/css" media="screen"/>
+
+    <!-- include source files here... -->
+    <script src="js/d3.v3.min.js"></script>
+
+    <!-- include google library base for use in tests -->
+    <script src="js/jquery-latest.js"></script>
+
+    <!-- Local directory copy of built brixlib -->
+    <script src="js/brixlib-compiled.js"></script>
+    <!--
+    The following does not work in this xhtml file because base.js
+    uses document.write to inject the scripts to be loaded and that method
+    doesn't exist. It is possible to supply a method to inject the
+    scripts, but I haven't tried that. -mjl
+
+    <script src="js/closure-library/closure/goog/base.js"></script>
+    <script src="js/brixlib-deps.js"></script>
+    <script>
+        goog.require('pearson.brix.utils.Ipc');
+        goog.require('pearson.utils.DomHelper');
+    </script -->
+ 
+    <!-- SanVan core (LAS-PAF)'s amc -->
+    <script src="js/amc.js"></script>
+
+    <!-- IPC initialization and pointers to IPS and AMS -->
+    <script src="js/demo-boilerplate.js"></script>
+
+    <script>
+    // The logToConsole abstracts the google closure logging configuration:
+	pearson.utils.logToConsole(true, 'FINER', 'pearson');
+    </script>
+
+    <style type="text/css">
+.demo_message_box {
+    border: orange 1px solid; padding: 10px;
+}
+.demo_params .dataval {
+    font-weight: bold;
+}
+.demo {
+    padding: 10px;
+}
+.brix {
+    border: #FF00FF 1px dashed; padding: 10px;
+}
+    </style>
+
+</head>
+
+<body>
+    <h1>Brix Integration test page (2014-01-07)</h1>
+    <div class="demo_message_box">
+        <div ><button type="button" id="toggleButton" class="btn btn-mini">show/hide params</button></div>
+        <div class="demo_params">
+            Params: (In parenthesis are the query string parameter names)
+            <ul>
+                <li>The content div IDs (divids): <span class="dataval" id="div_ids"></span></li>
+                <li>AMS Base URL (env): <span class="dataval" id="ams_base_url"></span></li>
+                <li>IPS Base URL (env): <span class="dataval" id="ips_base_url"></span></li>
+                <li>Activity URL (activity): <span class="dataval" id="activity_url"></span></li>
+                <li>Assignment URL (assignment): <span class="dataval" id="assignment_url"></span></li>
+                <li>Course: <span class="dataval" id="course"></span>, User: <span class="dataval" id="user"></span></li>
+            </ul>
+        <hr />
+        </div>
+
+        <div class="demo demo-form">
+            <form class="form-inline">
+                Use URL params or fill in all of these if you'd prefer:<br/>
+                Ass: <input type="text" name="assignment" class="input" placeholder="assignment guid"/>
+                Act: <input type="text" name="activity" class="input" placeholder="activity guid"/>
+                Container: <input type="text" name="divids" class="input-small" placeholder="container id" value="target1"/> Env:
+                <select name="env" class="input-small">
+                  <option value="local" >local</option>
+                  <option value="dev" >dev</option>
+                  <option value="qa" selected="selected">qa</option>
+                  <option value="prod" >prod</option>
+                </select>
+                <button type="submit" class="btn btn-mini">submit</button>
+            </form>
+        </div>
+        <div id="prod_warning" style="display: none" class="alert">
+            <h4>Warning! You are accessing the PROD environment!</h4>
+        </div>
+    </div>
+
+
+    <!-- TEST CONTENT {{ -->
+<div class="container">
+        <div class="span12 lc_ec_page">
+            <section class="lc_ec_majorMinor lc_ec_pageInner">
+                <div class="lc_ec_content">
+                    <h2 class="lc_ec_bHead"><span class='number setId'></span> 
+                                            <span class="setTitle"></span>
+                    </h2>
+                    <div class="lc_ec_leading">
+                        <div id="brixDivsPlaceholder"> 
+                        </div>
+                    </div>
+            </div>
+        </section>
+    </div>
+</div>
+    <!-- }} TEST CONTENT -->
+
+<script>
+<![CDATA[
+
+    (function() {
+        var BRIX_TOOL_URL='http:localhost:8089/';
+        // The configuration of servers by environment
+        var env_group = {
+            "local": {
+                "amsBaseUrl": "http://dev-414158649.us-west-1.elb.amazonaws.com",
+                "ipsBaseUrl": "http://localhost:8088",
+                "contentRepoBaseUrl": "http://repo.paf.dev.pearsoncmg.com/paf-repo/resources/activities/"
+            },
+            "dev": {
+                "amsBaseUrl": "http://dev-414158649.us-west-1.elb.amazonaws.com",
+                "ipsBaseUrl": "http://dev-414158649.us-west-1.elb.amazonaws.com/ips",
+                "contentRepoBaseUrl": "http://repo.paf.dev.pearsoncmg.com/paf-repo/resources/activities/"
+                //"contentRepoBaseUrl": "http://repo.paf.cert.pearsoncmg.com/paf-repo/resources/activities/"
+            },
+            "qa": {
+                "amsBaseUrl": "http://qa-ecs-8494243.us-west-1.elb.amazonaws.com",
+                "ipsBaseUrl": "http://qa-ips-lb-1087722155.us-west-1.elb.amazonaws.com",
+                "contentRepoBaseUrl": "http://repo.paf.cert.pearsoncmg.com/paf-repo/resources/activities/"
+            },
+            "prod": {
+                "amsBaseUrl": "http://54.193.20.16",
+                "ipsBaseUrl": "http://prod-ips-803617329.us-west-1.elb.amazonaws.com",
+                // @todo: Change to PROD url when PROD AMS is ready
+                "contentRepoBaseUrl": "http://repo.paf.pearsoncmg.com/paf-repo/resources/activities/"
+            },
+        }
+
+        var divIds = "target1"; // also containerId
+        var amsBaseUrl = null;
+        var ipsBaseUrl = null;
+        var course = "course_c2";
+        var user = "test1_t2";
+
+        var contentRepoBaseUrl = null;
+        // NOTE: YOU MUST SET THESE HERE OR IN URL PARAMS
+        var assignment = "eaf7f767-a4ad-42f9-b036-B";
+        var activity = "e579114a-2b65-4d9e-8ed5-B";
+
+        // Override to local based on query string parameter
+        // E.g. file://../multiplechoice-demo.html?ams={dev|qa}
+        var queryString = parseQueryString();
+        if (queryString.divids)
+        {
+            divIds  = queryString.divids;
+        }
+        $('[name=divids]').val( divIds ); // populates the form
+
+        // For backward compatibility, if env is not found, take ams as the environment
+        var env = (queryString.env && queryString.env) ? queryString.env : queryString.ams;
+
+        if (!env || !env_group.hasOwnProperty(env))
+        {
+            // default to dev
+            env = "dev";
+        }
+        if (env == "prod")
+        {
+            $("#prod_warning").show();
+        }
+        amsBaseUrl  = env_group[env].amsBaseUrl;
+        ipsBaseUrl  = env_group[env].ipsBaseUrl;
+        contentRepoBaseUrl  = env_group[env].contentRepoBaseUrl;
+        $('[name=env]').val( env ); // Selects the chosen env
+
+        // NOTE: as of 12/12/13 course and user can NOT be set
+        if (queryString.course)
+        {
+            course = queryString.course;
+        }
+        if (queryString.user)
+        {
+            user = queryString.user;
+        }
+        if (queryString.assignment)
+        {
+            assignment = queryString.assignment;
+        }
+        if (queryString.activity)
+        {
+            activity = queryString.activity;
+        }
+        $('[name=assignment]').val( assignment ); // Selects the chosen env
+        $('[name=activity]').val( activity ); // Selects the chosen env
+
+        var assignmentUrl = contentRepoBaseUrl + assignment;
+        var activityUrl = contentRepoBaseUrl + activity;
+
+        // Dynamically generate divs
+        var targetCount = generateBrixDivs('brixDivsPlaceholder', assignmentUrl, activityUrl, divIds)
+
+
+        /*
+         * Various page things
+         */
+        $("#toggleButton").click(function(){
+            $(".demo_params").toggle();
+        });
+
+        /*
+         * Display features and setup.
+         */
+        $("#div_ids").text(divIds + " ("+ targetCount+" targets)");
+        var amsVersionHyperlink = " (<a href=\"" +  amsBaseUrl + "/las-paf/version.txt\">las-paf version</a>)";
+        $("#ams_base_url").html(amsBaseUrl + amsVersionHyperlink);
+        var ipsLogHyperlink = " (server <a href=\"" +  ipsBaseUrl + "/index.html\">info</a>, <a href=\"" +  ipsBaseUrl + "/log\">log</a>)";
+        $("#ips_base_url").html(ipsBaseUrl + ipsLogHyperlink);
+
+        var activityHyperlink = " (<a href=\"" + BRIX_TOOL_URL +"?env=" + 
+            env + "&amp;type=activity&amp;guid=" + activity + "\">paf lookup</a>)";
+        $("#activity_url").html(activityUrl + activityHyperlink);
+
+        var assignHyperlink = " (<a href=\"" + BRIX_TOOL_URL +"?env=" + 
+            env + "&amp;type=assignment&amp;guid=" + assignment + "\">paf lookup</a>)";
+        $("#assignment_url").html(assignmentUrl + assignHyperlink);
+
+        $("#course").text(course);
+        $("#user").text(user);
+
+        /*
+         * Initialize Brix by loading the content from PAF through AMS and IPS and all that jazz
+         */
+        brixInitDiv(amsBaseUrl, ipsBaseUrl, course, user);
+    })();
+
+    /**
+     * Generates Brix container compliant divs under the parentNode
+     * Each div is of format:
+     * <div id="targetId" habitat-id="some_habitat_id1" class="brix" 
+     *      data-assignmenturl="http://<PAF_REPO>/paf-repo/resources/activities/ASSIGNMENT.GUID"
+     *      data-activityurl  ="http://<PAF_REPO>/paf-repo/resources/activities/ACTIVITY.GUID"
+     *      data-containerid="target1"
+     *      data-type="brix" >
+     *  </div>
+     * 
+     * @param  {DOM} parentDom          The DOM node which the div will be added to as children
+     * @param  {string} assignmentUrl   The assignment url common to all divs
+     * @param  {string} activityUrl     Theactivity url common to all divs
+     * @param  {string} divIdsCsv       String of comma separated ids. The number of ids defines the 
+     *                                  number of divs
+     */
+    function generateBrixDivs(parentNodeId, assignmentUrl, activityUrl, divIdsCsv)
+    {
+        var parentNode = document.getElementById(parentNodeId);
+        var divIds = divIdsCsv.split(',');
+        for (var i=0,  count=divIds.length; i < count; i++)
+        {
+            var divNode = document.createElement('div');
+            divNode.setAttribute('title', "Target: " +divIds[i]);
+            divNode.setAttribute('id', divIds[i]);
+            divNode.className = 'brix';
+            divNode.setAttribute('data-assignmenturl', assignmentUrl);
+            divNode.setAttribute('data-activityurl', activityUrl);
+            divNode.setAttribute('data-containerid', divIds[i]);
+            divNode.setAttribute('data-type', 'brix');
+            parentNode.appendChild(divNode);
+        }
+        return divIds.length;
+    }
+
+    /**
+     * Parses the URL's query string and returns an object representing the parameters.
+     * From https://developer.mozilla.org/en-US/docs/Web/API/window.location, 
+     * Example #7
+     * 
+     * @return {object} Object where properties are the parameters.
+     */
+    function parseQueryString() {
+        var oGetVars = {};
+        if (window.location.search.length > 1) {
+            for (var aItKey, nKeyId = 0, aCouples = window.location.search.substr(1).split("&"); nKeyId < aCouples.length; nKeyId++) {
+                aItKey = aCouples[nKeyId].split("=");
+                oGetVars[unescape(aItKey[0])] = aItKey.length > 1 ? unescape(aItKey[1]) : "";
+            }
+        }
+        return oGetVars;
+    }
+
+]]>
+</script>
+</body>
+</html>
