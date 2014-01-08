@@ -62,6 +62,9 @@
 .brix {
     border: #FF00FF 1px dashed; padding: 10px;
 }
+.tuple {
+    white-space:nowrap;
+}
     </style>
 
 </head>
@@ -73,7 +76,7 @@
         <div class="demo_params">
             Params: (In parenthesis are the query string parameter names)
             <ul>
-                <li>The content div IDs (divids): <span class="dataval" id="div_ids"></span></li>
+                <li>The content div IDs (divids): <span class="dataval" id="div_ids"></span> Hovering on pink dashed box will display the target id</li>
                 <li>AMS Base URL (env): <span class="dataval" id="ams_base_url"></span></li>
                 <li>IPS Base URL (env): <span class="dataval" id="ips_base_url"></span></li>
                 <li>Activity URL (activity): <span class="dataval" id="activity_url"></span></li>
@@ -88,13 +91,15 @@
                 Use URL params or fill in all of these if you'd prefer:<br/>
                 Ass: <input type="text" name="assignment" class="input" placeholder="assignment guid"/>
                 Act: <input type="text" name="activity" class="input" placeholder="activity guid"/>
-                Container: <input type="text" name="divids" class="input-small" placeholder="container id" value="target1"/> Env:
+                
+                <span class="tuple">Targets: <input type="text" name="divids" class="input" placeholder="container id (comma speparated values)" value="target1"/></span>
+                <span class="tuple">Env:
                 <select name="env" class="input-small">
                   <option value="local" >local</option>
                   <option value="dev" >dev</option>
                   <option value="qa" selected="selected">qa</option>
                   <option value="prod" >prod</option>
-                </select>
+                </select></span>
                 <button type="submit" class="btn btn-mini">submit</button>
             </form>
         </div>
@@ -233,12 +238,13 @@
         var ipsLogHyperlink = " (server <a href=\"" +  ipsBaseUrl + "/index.html\">info</a>, <a href=\"" +  ipsBaseUrl + "/log\">log</a>)";
         $("#ips_base_url").html(ipsBaseUrl + ipsLogHyperlink);
 
+        var tip = "title =\"This requires BrixWebTool to be listening on " + BRIX_TOOL_URL + "\"";
         var activityHyperlink = " (<a href=\"" + BRIX_TOOL_URL +"?env=" + 
-            env + "&amp;type=activity&amp;guid=" + activity + "\">paf lookup</a>)";
+            env + "&amp;type=activity&amp;guid=" + activity + "\" "+ tip + " >paf lookup</a>)";
         $("#activity_url").html(activityUrl + activityHyperlink);
 
         var assignHyperlink = " (<a href=\"" + BRIX_TOOL_URL +"?env=" + 
-            env + "&amp;type=assignment&amp;guid=" + assignment + "\">paf lookup</a>)";
+            env + "&amp;type=assignment&amp;guid=" + assignment + "\" "+ tip + ">paf lookup</a>)";
         $("#assignment_url").html(assignmentUrl + assignHyperlink);
 
         $("#course").text(course);
