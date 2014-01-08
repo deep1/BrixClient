@@ -63,8 +63,8 @@ java -jar brix-tool-pafclient-0.3-jar-with-dependencies.jar -m POST \
 # Update Activity
 java -jar brix-tool-pafclient-0.2-jar-with-dependencies.jar -m PUT \
 	-h "Content-Type: application/vnd.pearson.paf.v1.envelope+json;body=\"application/vnd.pearson.paf.v1.assignment+json\"\"" \
-	-d sanvan_mcq.assign.json \
 	-u http://repo.paf.cert.pearsoncmg.com/paf-repo/resources/activities/test.sanvan.activity.mcq1a -c
+	-d sanvan_mcq.assign.json \
 
 # Update Assignment
 java -jar brix-tool-pafclient-0.2-jar-with-dependencies.jar -m PUT \
