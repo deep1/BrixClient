@@ -19,15 +19,9 @@
 	
 	
 	<script src="js/d3.v3.min.js"></script>
-	 <!--
+	
     <script src="js/brixlib-compiled.js"></script>
-    -->
-	<script src="../closure/closure-library/closure/goog/base.js"></script>
-
-	<script src="js/brixlib-deps.js"></script>
-	<script>
-		goog.require('pearson.brix.BricLayer');
-	</script>
+   
 
 <script>
 	// Create an object that will contain the objects needed for the activities
@@ -182,8 +176,7 @@
 							],
 						"mortarConfig":
 							[
-								// We will need mortar to update the readout as the slider changes
-								// We will use a simple data swap mortar to be created later.
+						
 								{
 									"mortarId": "dataswap1",
 									"mortarType": "Dataswap",
@@ -282,6 +275,8 @@
 									"mortarType": "WaveForm",
 									"config":
 										{
+								// This mortar could be all sorts of things and its config is
+								// dependent on the particular custom type.
                                             //"freqTopic": freqSlide.changedValueEventId,
                                             //"otherTopic": dropdown.selectedEventId,
                                             //"amplitudeTopic": amplitudeSlide.changedValueEventId,
