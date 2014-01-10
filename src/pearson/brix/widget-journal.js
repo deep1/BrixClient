@@ -4,7 +4,7 @@
  *
  * @fileoverview Implementation of the Journal bric.
  *
- * The Journal bric displays an textbox that allows text to be entered and
+ * The Journal bric displays a textbox that allows text to be entered and
  * submitted.
  *
  * Created on       November 17, 2013
@@ -70,7 +70,7 @@ goog.require('pearson.brix.utils.SubmitManager');
  ****************************************************************************/
 pearson.brix.Journal = function (config, eventManager, bricWorks)
 {
-    // call the base class constructor
+    // Call the base class constructor.
     goog.base(this);
 
     /**
@@ -80,7 +80,7 @@ pearson.brix.Journal = function (config, eventManager, bricWorks)
      */
     this.logger_ = goog.debug.Logger.getLogger('pearson.brix.Journal');
 
-    // Without a valid BricWorks we can't construct this JournalBric
+    // Without a valid BricWorks we can't construct this JournalBric.
     if (!bricWorks)
     {
         var msg = 'Journal requires a valid BricWorks to create the Button brix that it uses';
@@ -110,7 +110,7 @@ pearson.brix.Journal = function (config, eventManager, bricWorks)
      */
     this.title_ = config.title;
 
-    // The configuration options for the submit button
+    // The configuration options for the submit button.
     var submitBtnConfig =
     {
         id: this.jrnlId_ + "_sbmtBtn",
@@ -157,7 +157,7 @@ pearson.brix.Journal = function (config, eventManager, bricWorks)
      */
     var SubmitAnswerRequest;
 
-    // subscribe to events of our 'child' brix
+    // Subscribe to events of our 'child' brix.
     eventManager.subscribe(this.submitButton.pressedEventId, goog.bind(this.handleSubmitRequested_, this));
 
     /**
@@ -381,7 +381,7 @@ pearson.brix.Journal.prototype.restoreState = function (state)
         this.attemptsMade_ = this.responses_[this.responses_.length - 1]['attemptsMade'];
     }
 
-    // If we're drawn, we need to redraw
+    // If we're drawn, we need to redraw.
     if (this.lastdrawn_.container != null)
     {
         this.redrawFeedback_();
@@ -407,18 +407,18 @@ pearson.brix.Journal.prototype.draw = function (container)
 
     this.lastdrawn_.container = container;
 
-    // make a div to hold the journal question
+    // Make a div to hold the journal question.
     var bricGroup = container.append('div')
         .attr('class', 'brixJournal');
 
-    // use a fieldset (although w/o a form) to group the title
+    // Use a fieldset (although w/o a form) to group the title.
     var jCntr = bricGroup.append('fieldset');
 
     var title = jCntr.append('legend')
         .attr('class', 'title')
         .html(this.title_);
 
-    // make a div to hold the textarea so we can size it appropriately
+    // Make a div to hold the textarea so we can size it appropriately.
     var areaCntr = bricGroup.append('div')
         .attr('class', 'journalTextarea');
 
@@ -429,16 +429,20 @@ pearson.brix.Journal.prototype.draw = function (container)
 
     if (this.responses_.length !== 0)
     {
-        // then get the last response and stick it in the textarea
+        // Then get the last response and stick it in the textarea.
         var lastResponse = this.responses_[this.responses_.length - 1];
         textentry.property('value', lastResponse.studentSubmission.entry);
         textentry.attr('disabled', 'disabled');
     }
 
-    // we need a block container for the submit button and the attempts
+    // We need a block container for the submit button and the attempts.
+    // There are no attempts at this point but it's likely coming.
+    // @todo - This div's css behaves strangely when in html but
+    // appears to be fine in xhtml.
+    // Please see bug http://jira.pearsoncmg.com/jira/browse/ECOURSES-2278
     var submitAndAttemptsCntr = bricGroup.append('div');
 
-    // draw the submit button below
+    // Draw the submit button below.
     var submitButtonCntr = submitAndAttemptsCntr.append('div')
         .attr('class', 'submit')
         .style('display', 'inline-block');
@@ -449,7 +453,7 @@ pearson.brix.Journal.prototype.draw = function (container)
         .attr('class', 'attempts');
 
     // If we haven't submitted, listen for keyboard events on the
-    // textarea and enable submit
+    // textarea and enable submit.
     if (this.responses_.length === 0)
     {
         textentry.on('keypress', function ()
@@ -479,7 +483,7 @@ pearson.brix.Journal.prototype.draw = function (container)
 pearson.brix.Journal.prototype.drawFeedback_ = function (cntr)
 {
     this.logger_.fine('drawing feedback');
-    // make a target for feedback when the question is answered
+    // Make a target for feedback when the question is answered.
     cntr.append('div')
         .attr('class', 'feedback');
 
@@ -498,17 +502,17 @@ pearson.brix.Journal.prototype.redrawFeedback_ = function ()
     var feedbackCntr = this.lastdrawn_.bricGroup.select('div.feedback');
 
     // Currently we only display the feedback from the last response
-    // so 1st remove any feedback being displayed
+    // so 1st remove any feedback being displayed.
     var prevFeedback = this.lastdrawn_.bricGroup.selectAll('div.feedback > *');
     prevFeedback.remove();
 
-    // If there's no responses then there's no feedback
+    // If there's no responses then there's no feedback.
     if (this.responses_.length === 0)
     {
         return;
     }
 
-    // If there is a response, provide the default feedback
+    // If there is a response, provide the default feedback.
     feedbackCntr.append('div')
         .attr('class', 'feedback-correct')
         .text('Your entry is saved.');
