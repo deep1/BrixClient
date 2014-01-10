@@ -45,33 +45,21 @@
 		</div>
 	</div>
 
-	<script src="js/jquery-latest.js"></script>
+    <script src="js/jquery-latest.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery-ui-1.10.2.custom.js"></script>
-	<script src="js/toc-structure.js"></script>
-	<script src="js/eCourse-master.js"></script>
-	<script src="js/d3.v3.min.js"></script>
-
-	<!--script src="js/brixlib-compiled.js"></script-->
-
-	<script src="js/closure-library/closure/goog/base.js"></script>
-	<script src="js/brixlib-deps.js"></script>
+    <script src="js/toc-structure.js"></script>
+    <script src="js/eCourse-master.js"></script>
+    <script src="js/d3.v3.min.js"></script>
+<!--
+    <script src="js/brixlib-compiled.js"></script>
+-->
+    <script src="js/closure-library/closure/goog/base.js"></script>
+    <script src="js/brixlib-deps.js"></script>
     <script>
-        goog.require('pearson.brix.BricLayer');
+    // requiring the briclayer will pull in all brix and mortar and the eventmanager
+	    goog.require('pearson.brix.BricLayer');
     </script>
-
-	<!--script src="js/goog/base.js"></script>
-	<script src="../src/pearson/utils/eventmanager.js"></script>
-	<script src="../src/pearson/brix/widget-base.js"></script>
-	<script src="../src/pearson/brix/widget-prototype-axes.js"></script>
-	<script src="../src/pearson/brix/widget-linegraph.js"></script>
-	<script src="../src/pearson/brix/widget-labelgroup.js"></script>
-    <script src="../src/pearson/brix/widget-markergroup.js"></script>
-    <script src="../src/pearson/brix/widget-callouts.js"></script>
-	<script src="../src/pearson/brix/widget-image.js"></script>
-	<script src="../src/pearson/brix/widget-carousel.js"></script>
-	<script src="../src/pearson/brix/widget-imageviewer.js"></script-->
-
 <script>
     pearson.utils.logToConsole(true, 'FINER', 'pearson');
 // local aliases for convenience

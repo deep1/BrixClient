@@ -40,17 +40,25 @@
 	</div>
 
     <script src="js/jquery-latest.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<!-- <script src="js/jquery.touchSwipe.min.js"></script> -->
-	<script src="js/jquery-ui-1.10.2.custom.js"></script>
-	<script src="js/toc-structure.js"></script>    
-	<script src="js/eCourse-master.js"></script>    
-	<script src="js/d3.v3.min.js"></script>
-    
+    <script src="js/bootstrap.min.js"></script>
+    <!-- <script src="js/jquery.touchSwipe.min.js"></script> -->
+    <script src="js/jquery-ui-1.10.2.custom.js"></script>
+    <script src="js/toc-structure.js"></script>    
+    <script src="js/eCourse-master.js"></script>    
+    <script src="js/d3.v3.min.js"></script>
+<!--
+    <script src="js/brixlib-compiled.js"></script>
+-->
+    <script src="js/closure-library/closure/goog/base.js"></script>
+    <script src="js/brixlib-deps.js"></script>
+    <script>
+    // requiring the briclayer will pull in all brix and mortar and the eventmanager
+	    goog.require('pearson.brix.BricLayer');
+    </script>
+    <!--
     <script src="js/widget-base.js"></script>
     <script src="js/widget-button.js"></script>
 	<script src="js/widget-slider.js"></script>
-	<!-- widget-numeric is required with widget-slider, even if you don't want a readout, as you'll get an "Uncaught ReferenceError: Readout is not defined" error without it -->
 	<script src="js/widget-numeric.js"></script>
 	<script src="js/widget-radiogroup.js"></script>
 	<script src="js/widget-multiplechoicequestion.js"></script>
@@ -59,6 +67,7 @@
 	<script src="js/submitmanager.js"></script>
 	<script src="js/answerman.js"></script>
 	<script src="js/fakeactivitydb.js"></script>
+	-->
 	<script>
 
 	// create event manager

@@ -15,7 +15,15 @@
 <body>
 	<div id="radioRnd"></div>
 	<script src="js/d3.v3.min.js"></script>
+	<!--
 	<script src="js/brixlib-compiled.js"></script>
+	-->
+	<script src="js/closure-library/closure/goog/base.js"></script>
+	<script src="js/brixlib-deps.js"></script>
+	<script>
+	// requiring the briclayer will pull in all brix and mortar and the eventmanager
+		goog.require('pearson.brix.BricLayer');
+	</script>
 	<script src="js/Neff12activitydb.js"></script>
 
 	<script>
