@@ -61,12 +61,21 @@ After oil has been transported, it has to be converted at refineries into second
 	<script src="js/d3.v2.min.js"></script>
 	<script src="js/toc-structure.js"></script>
 	<script src="js/eCourse-master.js"></script>
+    <!--
+	<script src="js/brixlib-compiled.js"></script>
+    -->
+	<script src="js/closure-library/closure/goog/base.js"></script>
+	<script src="js/brixlib-deps.js"></script>
+	<script>
+	// requiring the briclayer will pull in all brix and mortar and the eventmanager
+		goog.require('pearson.brix.BricLayer');
+	</script>
+	<!--
 	<script src="js/widgets.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-    <script src="js/widget-callouts.js"></script>
-
+	<script src="js/widget-callouts.js"></script>
 	<script src="js/eventmanager.js"></script>
-
+	-->
 	<script>
 
 
