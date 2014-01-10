@@ -242,9 +242,10 @@ pearson.brix.Journal.prototype.handleSubmitRequested_ = function ()
             responseCallback: goog.bind(this.handleSubmitResponse_, this)
         };
 
-    // Disable the submit button
+    // Disable the submit button and the textarea
     // at least for now we only allow submitting once.
     this.submitButton.setEnabled(false);
+    entry.attr('disabled', 'disabled');
 
     this.eventManager.publish(this.submitScoreRequestEventId, submitAnsDetails);
 };

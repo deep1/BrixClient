@@ -137,9 +137,16 @@
     <script src="js/toc-structure.js"></script>    
     <script src="js/eCourse-master.js"></script>    
     <script src="js/d3.v3.min.js"></script>
-
-    <!--<script src="js/brixlib-compiled.js"></script>-->
-    
+<!--
+    <script src="js/brixlib-compiled.js"></script>
+-->
+    <script src="js/closure-library/closure/goog/base.js"></script>
+    <script src="js/brixlib-deps.js"></script>
+    <script>
+    // requiring the briclayer will pull in all brix and mortar and the eventmanager
+	    goog.require('pearson.brix.BricLayer');
+    </script>
+    <!--
     <script src="../closure/closure-library/closure/goog/base.js"></script>
     <script src="../closure/closure-library/closure/goog/deps.js"></script>
     <script src="../closure/closure-library/closure/goog/debug/logger.js"></script>
@@ -180,7 +187,7 @@
 
     <script src="js/domhelper.js"></script>
     <script src="js/ipc.js"></script>
-
+-->
     <script>
     var debugConsole = new goog.debug.Console();
     debugConsole.setCapturing(true);

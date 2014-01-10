@@ -11,9 +11,15 @@
 <body>
     <div id="b46d6d3bc3a9f492db86fcf3af161fa67"></div>
     <script src="js/d3.v3.min.js"></script>
-    
+<!--
     <script src="js/brixlib-compiled.js"></script>
-
+-->
+    <script src="js/closure-library/closure/goog/base.js"></script>
+    <script src="js/brixlib-deps.js"></script>
+    <script>
+    // requiring the briclayer will pull in all brix and mortar and the eventmanager
+	    goog.require('pearson.brix.BricLayer');
+    </script>
 <script>
     // Create an object that will contain the objects needed for the activities
     // on this page.

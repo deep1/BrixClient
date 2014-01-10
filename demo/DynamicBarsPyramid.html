@@ -56,47 +56,18 @@
     <script src="js/jquery-latest.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery-ui-1.10.2.custom.js"></script>
-	<script src="js/toc-structure.js"></script>
-	<script src="js/eCourse-master.js"></script>
-	<script src="js/d3.v3.min.js"></script>
-
-	<!--
-	<script src="js/brixlib-compiled.js"></script>
-	-->
-	<script src="../closure/closure-library/closure/goog/base.js"></script>
-	<script src="../closure/closure-library/closure/goog/deps.js"></script>
-
-	<script src="js/eventmanager.js"></script>
-	<script src="js/fakeactivitydb.js"></script>
-	<script src="js/answerman.js"></script>
-	<script src="js/submitmanager.js"></script>
-    <script src="js/mortar-base.js"></script>
-	<script src="js/widget-base.js"></script>
-	<script src="js/bricworks.js"></script>
-    <script src="js/widget-numeric.js"></script>
-    <script src="js/widget-legend.js"></script>
-    <script src="js/widget-callouts.js"></script>
-    <script src="js/widget-button.js"></script>
-    <script src="js/widget-sketch.js"></script>
-    <script src="js/widget-prototype-axes.js"></script>
-	<script src="js/widget-linegraph.js"></script>
-	<script src="js/widget-barchart.js"></script>
-    <script src="js/widget-piechart.js"></script>
-    <script src="js/widget-image.js"></script>
-    <script src="js/widget-carousel.js"></script>
-    <script src="js/widget-imageviewer.js"></script>
-	<script src="js/widget-labelgroup.js"></script>
-    <script src="js/widget-markergroup.js"></script>
-    <script src="js/widget-radiogroup.js"></script>
-    <script src="js/widget-checkgroup.js"></script>
-    <script src="js/widget-selectgroup.js"></script>
-    <script src="js/widget-multiplechoicequestion.js"></script>
-    <script src="js/widget-multiselectquestion.js"></script>
-    <script src="js/widget-numericquestion.js"></script>
-    <script src="js/widget-slider.js"></script>
-    <script src="js/mortar-hilite.js"></script>
-	<script src="js/briclayer.js"></script>
-
+    <script src="js/toc-structure.js"></script>
+    <script src="js/eCourse-master.js"></script>
+    <script src="js/d3.v3.min.js"></script>
+<!--
+    <script src="js/brixlib-compiled.js"></script>
+-->
+    <script src="js/closure-library/closure/goog/base.js"></script>
+    <script src="js/brixlib-deps.js"></script>
+    <script>
+    // requiring the briclayer will pull in all brix and mortar and the eventmanager
+	    goog.require('pearson.brix.BricLayer');
+    </script>
 <script>
 	// Create an object that will contain the objects needed for the activities
 	// on this page.
