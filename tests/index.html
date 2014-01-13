@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="lib/mocha/mocha.css">
 </head>
 <body>
-    <div>If the test fails, try compiling the lib folder with ./build.sh =)</div>
+    <div>If some tests fail unexpectedly, try rebuilding by running "make build" =)</div>
     <div id="mocha"></div>
     <script src="lib/mocha/mocha.js"></script>
     <script>mocha.setup('bdd')</script>
@@ -33,6 +33,7 @@
         goog.require('pearson.brix.utils.Ipc');
         goog.require('pearson.utils.DomHelper');
     </script>
+    
     <script>
         // log WARNING and higher level messages to the console
         // other options CONFIG, FINE, FINER, FINEST you may want
@@ -56,6 +57,7 @@
     <script src="spec/widget-radiogroup-spec.js"></script>
     <script src="spec/widget-multiplechoicequestion-spec.js"></script>
     <script src="spec/widget-multiselectquestion-spec.js"></script>
+    <script src="spec/widget-journal-spec.js"></script>
     <script src="spec/widget-sketch-spec.js"></script>
     <script src="spec/widget-slider-spec.js"></script>
     <script src="spec/submitmanager-spec.js"></script>
