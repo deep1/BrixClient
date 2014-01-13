@@ -7,6 +7,7 @@
 
 DEPSWRITER = tools/closure-library/closure/bin/build/depswriter.py
 BUILDER = tools/closure-library/closure/bin/build/closurebuilder.py
+JSDOC = tools/jsdoc/jsdoc
 BUILDER_ARGS = \
 	--root=src/pearson \
 	--root=src/goog \
@@ -97,7 +98,8 @@ $(brixlib_compiled) : $(brixlib_sources)
 $(brixlib_deps) : $(brixlib_sources)
 	python $(DEPSWRITER) --root_with_prefix="src/pearson ../../../pearson" --output_file=$(brixlib_deps)
 
-doc :
+doc : $(brixlib_sources) tools/jsdoc-conf.json
+	$(JSDOC) -c tools/jsdoc-conf.json --destination build/srcdoc/
 
 test :
 
