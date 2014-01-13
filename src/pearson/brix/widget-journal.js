@@ -242,8 +242,12 @@ pearson.brix.Journal.prototype.handleSubmitRequested_ = function ()
             responseCallback: goog.bind(this.handleSubmitResponse_, this)
         };
 
-    // Disable the submit button and the textarea
+    // Disable the submit button and the textarea as
     // at least for now we only allow submitting once.
+    // NOTE: If an error is thrown and the submission doesn't actually
+    // write then we've locked the user out of this textarea and their
+    // only recourse is to refresh the page, which will cause them to
+    // lose their work.  Sad.
     this.submitButton.setEnabled(false);
     entry.attr('disabled', 'disabled');
 
@@ -381,10 +385,12 @@ pearson.brix.Journal.prototype.restoreState = function (state)
         this.attemptsMade_ = this.responses_[this.responses_.length - 1]['attemptsMade'];
     }
 
-    // If we're drawn, we need to redraw.
+    // If we're drawn, we need to redraw feedback and make sure our entry
+    // and enabled/disabled things are properly set.
     if (this.lastdrawn_.container != null)
     {
         this.redrawFeedback_();
+        this.redrawEntry_();
     }
 };
 
@@ -517,4 +523,18 @@ pearson.brix.Journal.prototype.redrawFeedback_ = function ()
         .attr('class', 'feedback-correct')
         .text('Your entry is saved.');
 
+};
+
+/* **************************************************************************
+ * Journal.redrawEntry_                                                */ /**
+ *
+ * Update the text entry with what exists in state, enable/disable
+ * the textarea as appropriate, and enable/disable the submit button
+ * as appropriate.
+ * @private
+ *
+ ****************************************************************************/
+pearson.brix.Journal.prototype.redrawEntry_ = function ()
+{
+    throw new Error('redrawEntry_ has not yet been implemented on Journals'); 
 };
