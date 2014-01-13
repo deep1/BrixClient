@@ -8,8 +8,7 @@
  * submitted.
  *
  * Created on       November 17, 2013
- * @author          Michael Jay Lippert
- *                  Seann Ives
+ * @author          Seann Ives
  *
  * @copyright (c) 2013 Pearson, All rights reserved.
  *
@@ -22,7 +21,6 @@ goog.require('goog.debug.Logger');
 goog.require('pearson.brix.HtmlBric');
 goog.require('pearson.utils.IEventManager');
 goog.require('pearson.utils.EventManager');
-goog.require('pearson.brix.utils.SubmitManager');
 
 // Sample configuration objects for classes defined here
 (function()
@@ -44,6 +42,7 @@ goog.require('pearson.brix.utils.SubmitManager');
  *
  * @constructor
  * @extends {pearson.brix.HtmlBric}
+ * @implements {pearson.brix.IState}
  * @export
  *
  * @param {Object}      config          -The settings to configure this Journal
@@ -162,6 +161,7 @@ pearson.brix.Journal = function (config, eventManager, bricWorks)
 
     /**
      * Information about the last drawn instance of this bric (from the draw method)
+     * @private
      * @type {Object}
      */
     this.lastdrawn_ =
@@ -339,7 +339,7 @@ pearson.brix.Journal.prototype.getId = function ()
 pearson.brix.Journal.StateObject;
 
 /* **************************************************************************
- * Journal.getState                                     */ /**
+ * Journal.getState                                                    */ /**
  *
  * @inheritDoc
  * @export
@@ -358,7 +358,7 @@ pearson.brix.Journal.prototype.getState = function ()
 };
 
 /* **************************************************************************
- * Journal.restoreState                                 */ /**
+ * Journal.restoreState                                                */ /**
  *
  * @inheritDoc
  * @export
@@ -491,7 +491,7 @@ pearson.brix.Journal.prototype.drawFeedback_ = function (cntr)
 };
 
 /* **************************************************************************
- * Journal.redrawFeedback_                              */ /**
+ * Journal.redrawFeedback_                                             */ /**
  *
  * Update the displayed response feedback.
  * @private

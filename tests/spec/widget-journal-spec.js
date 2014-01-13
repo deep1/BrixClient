@@ -26,7 +26,7 @@
     bricWorks.registerBricMold(BricTypes.JOURNAL, Journal);
     bricWorks.registerBricMold(BricTypes.BUTTON, pearson.brix.Button);
 
-    describe.only('Journal: Tell me about your summer vacation', function () {
+    describe('Journal: Tell me about your summer vacation', function () {
         var eventManager = null;
 
 
