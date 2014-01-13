@@ -34,7 +34,7 @@
             var configJournal1 =
                 {
                     id: "Q1",
-                    
+                    title: "Tell me about yourself."                    
                 };
 
             var myJournalQuestion = null;
@@ -146,10 +146,52 @@
         });
 
 
-        describe.skip('Submission and submit responses', function () {
+        describe('Submission and submit responses', function () {
+
+            var configJournal1 =
+                {
+                    id: "Q1",
+                    title: "Tell me about yourself."                    
+                };
+
+            var cntrNode = null;
+            var myJournalQuestion = null;
+            var selectEventCount = 0;
+            var lastSelectEventDetails = null;
+            var journalNode = null;
+
+            var logSelectEvent =
+                function logSelectEvent(eventDetails)
+                {
+                    ++selectEventCount;
+                    lastSelectEventDetails = eventDetails;
+                };
+
+            before(function () {
+                // Set the seed for future uses of Math.random so the results are
+                // deterministic and we can test them.
+                Math.seedrandom("Journal");
+
+                bricWorks.eventManager = new EventManager();
+                selectEventCount = 0;
+                lastSelectEventDetails = null;
+
+                myJournalQuestion = bricWorks.createBric(BricTypes.JOURNAL, configJournal1);
+                bricWorks.eventManager.subscribe(myJournalQuestion.selectedEventId, logSelectEvent);
+                //eventManager.subscribe(myJournalQuestion.submitScoreRequestEventId, logScoreRequestEvent);
+                
+                cntrNode = helper.createNewDiv();
+                myJournalQuestion.draw(d3.select(cntrNode));
+
+                var journalNode = myJournalQuestion.lastdrawn_.bricGroup.node();
+                
+            });
+
             describe('before anything is typed', function () {
                 it('should have default text', function () {
-                
+                    var textArea = d3.select(journalNode);
+                    console.log(textArea);
+                    expect(textArea.attr.placeholder).to.equal('The response entered here will be saved to your notes and may be collected by your instructor if he/she requires it.');
                 });
 
                 it('should have a disabled submit button', function () {
