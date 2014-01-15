@@ -542,13 +542,14 @@ pearson.brix.MultipleChoiceQuestion.prototype.restoreState = function (state)
     if (this.responses_.length !== 0)
     {
         this.attemptsMade_ = this.responses_[this.responses_.length - 1]['attemptsMade'];
+
+        // Whether we're drawn or not, if we've got a response then there will be
+        // a selection, and we no longer want to enable the submit button when
+        // a choice is made.
+        this.eventManager.unsubscribe(this.presenterBric.selectedEventId, this.answerSelectedHandler_);
     }
 
-    // Whether we're drawn or not, if we've got a response then there will be
-    // a selection, and we no longer want to enable the submit button when
-    // a choice is made.
-    this.eventManager.unsubscribe(this.presenterBric.selectedEventId, this.answerSelectedHandler_);
-
+    
     // If we're drawn, we need to redraw
     if (this.lastdrawn_.container != null)
     {
