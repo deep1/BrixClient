@@ -4,3 +4,6 @@
 [submodule "tools/closure-compiler"]
 	path = tools/closure-compiler
 	url = https://github.com/mlippert/brixcompiler.git
+[submodule "tools/jsdoc"]
+	path = tools/jsdoc
+	url = https://github.com/jsdoc3/jsdoc.git
