@@ -549,7 +549,6 @@ pearson.brix.MultipleChoiceQuestion.prototype.restoreState = function (state)
         this.eventManager.unsubscribe(this.presenterBric.selectedEventId, this.answerSelectedHandler_);
     }
 
-    
     // If we're drawn, we need to redraw
     if (this.lastdrawn_.container != null)
     {
